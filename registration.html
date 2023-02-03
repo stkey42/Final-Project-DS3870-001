@@ -11,10 +11,10 @@
     <div class="bg-primary row vw-100">
         <div class="col-md-6 col-lg-8 d-none d-md-block vh-100"></div>
             <div class="col-12 col-md-6 col-lg-4 card vh-50">
-            <div class="card-head" style="background-color:gold">
-                <h1 class="text-center">Farm Information</h1>
-            </div>
-            <div class="card-body" style="background-color:gold">
+                <div class="card-head" style="background-color:gold">
+                    <h1 class="text-center">Farm Information</h1>
+                </div>
+                <div class="card-body" style="background-color:gold">
                 <form>
                     
                     <label for="txtFarmId" class="form-label">Farm ID</label>
@@ -32,18 +32,6 @@
                     <label for="txtZip" class="form-label pt-4">Zip Code</label>
                     <input class="form-control" id="txtZip">
                     
-                    <label for="txtFirstName" class="form-label">First Name</label>
-                    <input class="form-control" id="txtFirstName">
-                    <label for="txtLastName" class="form-label pt-4">Last Name</label>
-                    <input class="form-control" id="txtLastName">
-                    <label for="txtEmail" class="form-label pt-4">Email</label>
-                    <input class="form-control" id="txtEmail" type="Email">
-                    <label for="txtPassword" class="form-label pt-4">Password</label>
-                    <input class="form-control" id="txtPassword" type="Password">
-                    <label for="txtMobile" class="form-label pt-4">Mobile Number</label>
-                    <input class="form-control" id="txtMobile">
-                    <button id="btnCreate" class="btn btn-success col-12 mt-5" type="button">Create Account</button>
-                    
                 </form>
             </div>
         </div>
@@ -55,7 +43,7 @@
     <script>
         
         $('#btnCreate').click(function(){
-            $('#form-label').slideUp()
+        
         })
 
     </script>
