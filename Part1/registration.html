@@ -7,18 +7,34 @@
     <title>Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body>
-    <div class="bg-primary row vw-100" style="background-image: url('farm2.png')">
+<body class="bg-primary" style="background-image: url('farm2.png')">
+    <div class="row vw-100">
         <div class="col-md-6 col-lg-8 d-none d-md-block vh-100"></div>
-            <div class="col-12 col-md-6 col-lg-4 card vh-50">
-                <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#farmInformation" aria-expanded="false" aria-controls="farmInformation">Farm Information</button>
-                <div class="card-head" style="background-color:gold">
-                    <h3 class="text-center">Farm Information</h3>
-                </div>
-                <div class="card-body" style="background-color:gold" id="farmInformation">
+        <div class="col-12 col-md-6 col-lg-4 card vh-50 bg-warning">
+            <h4 class="text-center">Welcome To Your Local Farmer!</h4>
+            <h6 class="text-center">Please Enter Your Infomation Below To Begin</h6>
+            
+                <button class="btn btn-success sm-col-3 md-col-12 mt-2" id="User" type="button" data-bs-toggle="collapse" data-bs-target="#UserInformation" aria-expanded="false" aria-controls="UserInformation">User Information</button>
+                <div class="card-body bg-light" id="UserInformation">
+            <form>
+                <label for="txtUserFName" class="form-label">First Name</label>
+                <input class="form-control" id="txtUserFName">
+                <label for="txtUserLName" class="form-label pt-4">Last Name</label>
+                <input class="form-control" id="txtUserLName">
+                <label for="txtEmail" class="form-label pt-4">Email</label>
+                <input class="form-control" id="txtEmail">
+                <label for="txtPassword" class="form-label pt-4">Password</label>
+                <input class="form-control" id="txtPassword">
+                <label for="txtMobNum" class="form-label pt-4">Mobile Number</label>
+                <input class="form-control" id="txtMobNum">
+        </form>
+</div>
+            <button class="btn btn-success sm-col-3 md-col-12 mt-2" id="Farm" type="button" data-bs-toggle="collapse" data-bs-target="#FarmInformation" aria-expanded="false" aria-controls="FarmInformation">Location Details</button>
+                   <div class="card-body bg-light" id="FarmInformation">
                 <form>
                     <label for="txtFarmId" class="form-label">Farm ID</label>
                     <input class="form-control" id="txtFarmId">
+                    <h6 class="text-center mt-4">Or Enter The Following</h6>
                     <label for="txtFarmName" class="form-label pt-4">Farm Name</label>
                     <input class="form-control" id="txtFarmName">
                     <label for="txtAddress1" class="form-label pt-4">Street Address 1</label>
@@ -31,28 +47,19 @@
                     <input class="form-control" id="txtState">
                     <label for="txtZip" class="form-label pt-4">Zip Code</label>
                     <input class="form-control" id="txtZip">
-                    <button class="form-control btn btn-success mt-3" id="btnCreate">Continue</button>
             </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+DownLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-
-        $(document).on('click', function(){
-            $('#userInfo').slideToggle();
+        $(document).on('click','#btnUser',function(){
+            $('divUserInformation').slideToggle();
+        })
+        $(document).on('click','#btnFarm',function(){
+        $('divFarmInformation').slideToggle();
         })
 
-        $('#btnCreate').on('click',function(){
-            $('#userInfo').slideToggle();
-            $('#farmInfo').slideToggle();
-
-        })
-
-        $('#btnBack').on('click',function(){
-            $('#userInfo').slideToggle();
-            $('#farmInfo').slideToggle();
-        })
 
     </script>
 </body>
