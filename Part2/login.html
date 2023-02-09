@@ -8,26 +8,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body class="bg-primary" style="background-image: url('farm2.png')">
-    <div id="text" class="text-block text-center">
-        <h3 style="color: black; "style="font-weight: bolder;">Hello! Welcome to Slightly Sunny!</h3>
-    </div>
-    <div class="text-center" style="font-size: large;">
-        <p  style="color: black;" style="font-weight: bold;">Welcome Back We Are Ready To Provide You The Service You Need!</p>
+    <div id="text" class="text-block text-center pt-3">
+        <h3 style="font-family::cursive" style="color: black;" style="font-weight: 800 ;">Slightly Sunny</h3>
     </div>
 </div>
 
-<div class="row vw-100 justify-content-center">
-    <div class= "bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card">
-        <h5 style="color: black" class="text-center pt-3">Please Enter Your Information Below To Begin</h5>
+<div class="row vw-100 justify-content-center mt-2">
+    <div class= "bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
+        <h5 style="font-weight: 600;" style="color: black" class="text-left px-3 pt-3">Sign in to Slightly Sunny</h5>
         
         <div id="UserInformation">
             <div class="card-body">
                 <form style="color: black">
-                    <label for="txtEmail" class="form-label pt-2">Email</label>
-                    <input class="form-control" id="txtEmail">
-                    <label for="txtPassword" class="form-label pt-4">Password</label>
-                    <input class="form-control" id="txtPassword" type="password">
-                    <button style="color: white"; class="btn btn-success mb-2 col-4 col-sm-4 col-md-4 col-lg-4 offset-4" id="btnUser" type="button">Log In</button>
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 justify-content-center">
+                            <button style="color: white"; class="m-3 btn btn-primary btn-sm mt-4 col-12 col-sm-2 col-md-6 col-lg-5 offset-4" type="button">Sign in with Google</button>
+                            <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 mb-3 col-12 col-sm-2 col-md-6 col-lg-5 offset-4" type="button">Twitter</button>
+                        </div>
+                    </div>
+                    <h6 class="text-center mt-2">Or</h6>
+                    <hr>
+                    <label style="font-weight: 600" for="txtLEmail" class="form-label pt-1">Username or Email</label>
+                    <input class="form-control" id="txtLEmail">
+                        <label style="font-weight: 600" for="txtLPassword" class="form-label pt-3">Password</label>
+                        <input class="form-control" id="txtLPassword" type="password">
+                    </div>
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 justify-content-center mt-1">
+                        <button style="color: white"; class="m-3 btn btn-success btn-sm mt-4 col-12 col-sm-3 col-md-8 col-lg-8 offset-4" id="btnLogin" type="button">Log In</button>
+                        <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 col-12 col-sm-3 col-md-8 col-lg-8 offset-4" id="btnCreate" type="button">Create Account</button>
+                        </div>
+                    </div>
                 </form>
     </div>
         </div>
@@ -37,12 +48,9 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script>
     
-    // first form
-    $('#txtUserFName').val()
-    $('#txtUserLName').val()
-    $('#txtEmail').val();
-    $('#txtPassword').val();
-    $('#txtMobNum').val();
+    // login form
+    $('#txtLEmail').val();
+    $('#txtLPassword').val();
 
     var strErrorMessage = '';
 
@@ -52,26 +60,17 @@
         $('#btnFarm').slideToggle();
     })
     
-    $('#btnFarm').click(function(){
+    $('#btnLogin').click(function(){
 
         $('#btnUser').slideToggle();
 
-        let strFirstName = $('#txtUserFName').val();
-        let intFirstNameLength = $('#txtUserFName').val().length;
-        
-        let strLastName = $('#txtUserLName').val();
-        let intLastNameLength = $('#txtUserLName').val().length;
+        let strEmail = $('#txtLEmail').val();
+        let intEmailLength = $('#txtLEmail').val().length;
 
-        let strEmail = $('#txtEmail').val();
-        let intEmailLength = $('#txtEmail').val().length;
+        let strPassword = $('#txtLPassword').val();
+        let intPasswordLength = $('#txtLPassword').val().length;
 
-        let strPassword = $('#txtPassword').val();
-        let intPasswordLength = $('#txtPassword').val().length;
-
-        let intMobNum = $('#txtMobNum').val();
-        let intMobNumLength = $('#txtMobNum').val().length;
-
-        var strErrorMessage = 'Please check your data in User Information!';
+        var strErrorMessage = 'Please check your data in your login form!';
 
         if(intFirstNameLength < 1 || intLastNameLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
             alert(strErrorMessage);
