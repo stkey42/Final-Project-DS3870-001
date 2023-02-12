@@ -12,7 +12,7 @@
 </head>
 <body class="bg-info" style="background-image: url('farm3.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
     <div id="text" class="text-block text-center pt-3">
-        <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Slightly Sunny<img class="ms-2" style="transform: scaleX(-1)" src="cloud.png" alt="Cloudy Sun" width="100" height="100"</h3>
+        <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Slightly Sunny<img class="ms-2" style="transform: scaleX(-1)" src="cloud.png" alt="Cloudy Sun" width="100" height="100"></h3>
     </div>
 
 <div class="row vw-100 justify-content-center mt-2">
@@ -57,6 +57,12 @@
 
     var strErrorMessage = '';
 
+    var secErrorMessage = '';
+
+    $('#btnUser').click(function(){
+        $('#btnFarm').slideToggle();
+    })
+    
     $('#btnLogin').click(function(){
 
         $('#btnUser').slideToggle();

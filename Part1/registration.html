@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body class="bg-primary" style="background-image: url('farm2.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
+<body class="bg-info" style="background-image: url('farm2.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
         <div id="text" class="text-block text-center">
-            <h3 style="font-family:cursive; color: black;">Hello! Welcome to Slightly Sunny!</h3>
+            <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Hello! Welcome to Slightly Sunny!</h3>
         </div>
         <div class="text-center" style="font-size: large;">
-            <p style="font-weight: 700;" style="color: black;" style="font-weight: bold;">We are so happy you want to join our family and look forward to serving you!</p>
+            <p style="font-family: 'Rancho', cursive; color: black; font-size:x-large">We are so happy you want to join our family and look forward to serving you!</p>
         </div>
-    </div>
-    
     <div class="row vw-100 justify-content-center">
         <div class= "bg-warning col-9 col-sm-10 col-md-8 col-lg-8 card">
             <h5 style="color: black" class="text-center pt-3">Please Enter Your Information Below To Begin</h5>
             
             <button style="color: white"; class="btn btn-success mb-2" 
-            id="btnUser" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#UserInformation" aria-expanded="false" 
-            aria-controls="UserInformation">User Information</button>
+            id="btnUser" type="button" data-bs-toggle="collapse" data-bs-target="#UserInformation"
+            aria-expanded="false" aria-controls="UserInformation">User Information</button>
+            
             <div class="collapse" id="UserInformation">
                 <div class="card-body">
                     <form style="color: black">
@@ -38,15 +39,14 @@
                         <label for="txtMobNum" class="form-label pt-4">Mobile Number</label>
                         <input class="form-control" id="txtMobNum">
                     </form>
-        </div>
+                </div>
             </div>
 
-                   <button style="color: white"; class="btn btn-success mt-2 mb-2" 
-                   id="btnFarm" type="button" data-bs-toggle="collapse" 
-                   data-bs-target="#FarmInformation" aria-expanded="false" 
-                   aria-controls="FarmInformation">Location Details</button>
+                   <button style="color: white"; class="btn btn-success mt-2 mb-2"
+                   id="btnFarm" type="button" data-bs-toggle="collapse" data-bs-target="#FarmInformation"
+                   aria-expanded="false" aria-controls="FarmInformation">Location Details</button>
                    
-                   <div class="collapse" id="FarmInformation">
+                <div class="collapse" id="FarmInformation">
                     <div class="card-body">
                         <form style="color:black">
                             <label for="txtFarmId" class="form-label">Farm ID</label>
@@ -64,25 +64,23 @@
                             <input class="form-control" id="txtState">
                             <label for="txtZip" class="form-label pt-4">Zip Code</label>
                             <input class="form-control" id="txtZip">
-                            <a href="../Part2/login.html"><button style="color: white" class="form-control btn btn-success mt-5 col-12 col-sm-3 col-md-6 col-lg-8" id="btnCreate">Create Account</button></a>
-                    </form>
-            </div>
-                   </div>
+                            <button style="color: white" class="form-control btn btn-success mt-5 col-12 col-sm-3 col-md-6 col-lg-8" id="btnCreate"><a style="color: white" href="../Part2/login.html">Create Account</a></button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+        </div>
                 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
-        
         // first form
         $('#txtUserFName').val()
         $('#txtUserLName').val()
         $('#txtEmail').val();
         $('#txtPassword').val();
         $('#txtMobNum').val();
-
         var strErrorMessage = '';
-
         // second form
         $('#txtFarmId').val();
         $('#txtFarmName').val();
@@ -91,19 +89,10 @@
         $('#txtCity').val();
         $('#txtState').val();
         $('#txtZip').val();
-
         var secErrorMessage = '';
-        // toggle functions
-        $('#btnUser').click(function(){
-            $('#btnFarm').slideToggle();
-        })
-        
 
-        // value verification
-        $('#btnFarm').click(function(){
-
-            $('#btnUser').slideToggle();
-
+        // form verification
+        $('#btnCreate').click(function(){
             let strFirstName = $('#txtUserFName').val();
             let intFirstNameLength = $('#txtUserFName').val().length;
             
@@ -119,15 +108,12 @@
             let intMobNum = $('#txtMobNum').val();
             let intMobNumLength = $('#txtMobNum').val().length;
 
-            var strErrorMessage = 'Please check your data in User Information!';
+            var strErrorMessage1 = 'Please check your data in User Information!';
 
             if(intFirstNameLength < 1 || intLastNameLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
-                alert(strErrorMessage);
+                alert(strErrorMessage1);
             }
-        })
 
-        // second form verification
-        $('#btnCreate').click(function(){
             let strFarmId = $('#txtFarmId').val();
             let intFarmIdLength = $('#txtFarmId').val().length;
             
@@ -149,11 +135,12 @@
             let intZip = $('#txtZip').val();
             let intZipLength = $('#txtZip').val().length;
 
+            var strErrorMessage2 = 'Please check your data in Location Details!';
+
             if(intFarmIdLength  < 1 || intFarmNameLength < 1 || intAddressLength < 1 || intAddress2Length < 1 || intCityLength < 1 || intStateLength < 1 || intZipLength < 1){
-                alert(strErrorMessage);
+                alert(strErrorMessage2);
             }
         })
-
     </script>
 </body>
 </html>
