@@ -31,9 +31,9 @@
                     <h6 class="text-center mt-2">Or</h6>
                     <hr>
                         <label style="font-weight: 600" for="txtLEmail" class="form-label pt-1">Username or Email</label>
-                        <input class="form-control" id="txtLEmail" placeholder="jondavid@tntech.edu" aria-label="Email Address" aria-describedby="Input Number One"><br>
+                        <input class="form-control" id="txtLEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One"><br>
                         <label style="font-weight: 600" for="txtLPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
-                        <input class="form-control" id="txtLPassword" placeholder="codingIsKewl123" type="password">
+                        <input class="form-control" id="txtLPassword" placeholder="ex. codingIsKewl123" type="password">
                     </div>
                     <div class="row row-cols-2 row-cols-lg-12 g-2 g-lg-12 justify-content-center mt-1">
                             <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6 offset-4" id="btnLogin" type="button">Login</button>
@@ -56,16 +56,8 @@
     $('#txtLPassword').val();
 
     var strErrorMessage = '';
-
-    var secErrorMessage = '';
-
-    $('#btnUser').click(function(){
-        $('#btnFarm').slideToggle();
-    })
     
     $('#btnLogin').click(function(){
-
-        $('#btnUser').slideToggle();
 
         let strLEmail = $('#txtLEmail').val();
         let intLEmailLength = $('#txtLEmail').val().length;
@@ -74,11 +66,21 @@
         let intLPasswordLength = $('#txtLPassword').val().length;
         let strSpecialCharacter = "@";
 
-        var strErrorMessage = 'Please check your data in your login form!';
+        var strErrorMessage = '';
 
-        if(strLEmail != strSpecialCharacter){
-            strErrorMessage += 'Please make sure there is an @ symbol in email.\n'
+        if(intLEmailLength < 1 && intLPasswordLength < 1){
+            strErrorMessage += 'Please make sure that you enter a username or email and a password!';
         }
+        else if(intLEmailLength < 1){
+            strErrorMessage += 'Please enter an username or email!';
+        }
+        else if(intLPasswordLength < 1){
+            strErrorMessage += 'Please enter a password!'
+        }
+        else{
+            return false;
+        }
+        alert(strErrorMessage)
     })
 
 </script>
