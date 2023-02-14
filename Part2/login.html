@@ -57,6 +57,9 @@
 
     var strErrorMessage = '';
     const atSym = '@';
+    const dotCom = '.com';
+    const dotNet = '.net';
+    const dotEdu = '.edu';
     
     $('#btnLogin').click(function(){
         let strLEmail = $('#txtLEmail').val();
@@ -70,6 +73,10 @@
 
         if (strLEmail.includes(atSym) == false){
             strErrorMessage += 'Your email must include an @ symbol!';
+        }
+
+        else if (strLEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
+            strErrorMessage += 'Your email must include .com, .net, or .edu!';
         }
 
         else if(intLEmailLength < 2 && intLPasswordLength < 1){
