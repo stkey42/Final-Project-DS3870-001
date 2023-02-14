@@ -71,15 +71,7 @@
 
         var strErrorMessage = '';
 
-        if (strLEmail.includes(atSym) == false){
-            strErrorMessage += 'Your email must include an @ symbol!';
-        }
-
-        else if (strLEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
-            strErrorMessage += 'Your email must include .com, .net, or .edu!';
-        }
-
-        else if(intLEmailLength < 2 && intLPasswordLength < 1){
+        if(intLEmailLength < 2 && intLPasswordLength < 1){
             strErrorMessage += 'Please make sure that you enter a username or email and a password!';
         }
         else if(intLEmailLength < 2){
@@ -87,6 +79,12 @@
         }
         else if(intLPasswordLength < 1){
             strErrorMessage += 'Please enter a password!'
+        }
+        else if (strLEmail.includes(atSym) == false){
+            strErrorMessage += 'Your email must include an @ symbol!';
+        }
+        else if (strLEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
+            strErrorMessage += 'Your email must include .com, .net, or .edu!';
         }
         else{
             return false;
