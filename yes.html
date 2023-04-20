@@ -7,27 +7,94 @@
     <title>Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body>
-    <div class= "bg-warning col-9 col-sm-10 col-md-8 col-lg-6 card">
-
+<body class="bg-info" style="background-image: url('farm3.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
+    <div id="text" class="text-block text-center pt-3">
+        <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
     </div>
-        <div class="collapse justify-content-center" id="UserInformation">
+
+<div class="row vw-100 justify-content-center mt-2">
+    <div class="bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
+        <h5 style="font-weight:500; color: black" class="text-center pt-3">Sign in to Swollen Farms</h5>
+        
+        <div id="UserInformation">
             <div class="card-body">
-                <form style="color: black; font-weight: 600">
-                    <label for="txtUserFName" class="form-label">First Name</label>
-                    <input class="form-control" placeholder="ex. Jeff" id="txtUserFName" aria-label="First name" aria-describedby="First Input">
-                    <label for="txtUserLName" class="form-label pt-4">Last Name</label>
-                    <input class="form-control" placeholder="ex. Hemlok" id="txtUserLName" aria-label="Last name" aria-describedby="Second Input">
-                    <label for="txtEmail" class="form-label pt-4">Email</label>
-                    <input class="form-control" placeholder="ex. jhemlok21@tntech.edu" id="txtEmail" aria-label="Email Address" aria-describedby="Third Input">
-                    <label for="txtPassword" class="form-label pt-4">Password</label>
-                    <input class="form-control" id="txtPassword" placeholder="ex. shadowWizard" type="password" aria-label="Password" aria-describedby="Fourth Input">
-                    <label for="txtMobNum" class="form-label pt-4">Mobile Number</label>
-                    <input class="form-control" placeholder="ex. (931) 211-2315" id="txtMobNum" aria-label="Mobile Phone Number" aria-describedby="Fifth Input">
+                <form style="color: black">
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-lg-12 g-2 g-lg-12 justify-content-center">
+                            <button style="color: white; background-color: navy;" class="m-3 btn btn-success btn-sm mt-2 col-12 col-sm-4 col-md-5 col-lg-5 offset-4" type="button"><ion-icon class="me-2" name="logo-google"></ion-icon>Sign in using Google</button>
+                            <button style="color: white"; class="m-3 btn btn-info btn-sm mt-2 mb-3 col-12 col-sm-4 col-md-5 col-lg-5" type="button"><ion-icon class="me-2" name="logo-twitter"></ion-icon>Sign in using Twitter</button>
+                        </div>
+                    </div>
+                    <h6 class="text-center mt-2">Or</h6>
+                    <hr>
+                        <label style="font-weight: 600" for="txtLEmail" class="form-label pt-1">Username or Email</label>
+                        <input class="form-control" id="txtLEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One"><br>
+                        <label style="font-weight: 600" for="txtLPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
+                        <input class="form-control" id="txtLPassword" placeholder="ex. codingIsKewl123" type="password">
+                    </div>
+                    <div class="row row-cols-2 row-cols-lg-12 g-2 g-lg-12 justify-content-center mt-1">
+                            <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6 offset-4" id="btnLogin" type="button">Login</button>
+                            <button style="color: white" type="button" class="btn btn-outline-success mb-2">Not A Member? Sign Up Here</button>
+                    </div>
                 </form>
-            </div>
         </div>
     </div>
-</body>
+</div>
+
+<div class="row vw-100 justify-content-center" style="display:none" id="registration">
+        <div class= "bg-warning col-9 col-sm-10 col-md-8 col-lg-6 card">
+            <h5 style="color: black" class="text-center pt-3">Please Enter Your Information Below To Begin</h5>
+            
+            <button style="color: white"; class="btn-sm btn btn-success mt-2 mb-2" 
+            id="btnUser" type="button" data-bs-toggle="collapse" data-bs-target="#UserInformation"
+            aria-expanded="false" aria-controls="UserInformation">User Information</button>
+            
+            <div class="collapse justify-content-center" id="UserInformation">
+                <div class="card-body">
+                    <form style="color: black; font-weight: 600">
+                        <label for="txtUserFName" class="form-label">First Name</label>
+                        <input class="form-control" placeholder="ex. Jeff" id="txtUserFName" aria-label="First name" aria-describedby="First Input">
+                        <label for="txtUserLName" class="form-label pt-4">Last Name</label>
+                        <input class="form-control" placeholder="ex. Hemlok" id="txtUserLName" aria-label="Last name" aria-describedby="Second Input">
+                        <label for="txtEmail" class="form-label pt-4">Email</label>
+                        <input class="form-control" placeholder="ex. jhemlok21@tntech.edu" id="txtEmail" aria-label="Email Address" aria-describedby="Third Input">
+                        <label for="txtPassword" class="form-label pt-4">Password</label>
+                        <input class="form-control" id="txtPassword" placeholder="ex. shadowWizard" type="password" aria-label="Password" aria-describedby="Fourth Input">
+                        <label for="txtMobNum" class="form-label pt-4">Mobile Number</label>
+                        <input class="form-control" placeholder="ex. (931) 211-2315" id="txtMobNum" aria-label="Mobile Phone Number" aria-describedby="Fifth Input">
+                    </form>
+                </div>
+            </div>
+
+                   <button style="color: white"; class="btn-sm btn btn-success mt-2 mb-2"
+                   id="btnFarm" type="button" data-bs-toggle="collapse" data-bs-target="#FarmInformation"
+                   aria-expanded="false" aria-controls="FarmInformation">Location Details</button>
+                   
+                <div class="collapse" id="FarmInformation">
+                    <div class="card-body">
+                        <form style="color:black; font-weight: 600;">
+                            <label for="txtFarmId" class="form-label">Farm ID</label>
+                            <input class="form-control" placeholder="ex. A531356 (must be 6 numbers and one letter)" id="txtFarmId" aria-label="Farm ID if Known" aria-describedby="Sixth Input">
+                            <h6 class="text-center mt-5">Or</h6>
+                            <label for="txtFarmName" class="form-label pt-4">Farm Name</label>
+                            <input class="form-control" placeholder="ex. Herblunken Farm" id="txtFarmName" aria-label="Farm Name" aria-describedby="Seventh Input">
+                            <label for="txtAddress1" class="form-label pt-4">Street Address 1</label>
+                            <input class="form-control" placeholder="ex. Drury Lane" id="txtAddress" aria-label="Farm Address" aria-describedby="Eighth Input">
+                            <label for="txtAddress2" class="form-label pt-4">Street Address 2</label>
+                            <input class="form-control" placeholder="ex. Diagon Alley" id="txtAddress2" aria-label="Farm Address Two If Needed" aria-describedby="Ninth Input">
+                            <label for="txtCity" class="form-label pt-4">City</label>
+                            <input class="form-control" placeholder="ex. Lavendertown" id="txtCity" aria-label="City" aria-describedby="Tenth Input">
+                            <label for="txtState" class="form-label pt-4">State</label>
+                            <input class="form-control" placeholder="ex. Texas" id="txtState" aria-label="State" aria-describedby="Eleventh Input">
+                            <label for="txtZip" class="form-label pt-4">Zip Code</label>
+                            <input class="form-control" placeholder="ex. 38501" id="txtZip" aria-label="Zipcode" aria-describedby="Twelth Input">
+                            <button style="color: white" class="form-control btn-sm btn btn-success mt-5 col-12 col-sm-3 col-md-6 col-lg-8" id="btnCreate"><a style="color: white" href="../Login/login.html">Create Account</a></button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</body>
+</html>
