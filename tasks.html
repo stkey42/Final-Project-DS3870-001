@@ -5,17 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tasks</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body style="color:black">
-    <div class="align-items-center mt-2 card col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
+    <div class="align-items-center mt-2 col-8 col-sm-10 col-md-8 col-lg-6 card mt-1">
         <form class="card-body align-items-center" id="task-form">
-            <h3>Tasks</h3>
-            <label for="task-input">New task:</label>
+            <h3>To-Do</h3>
+            <label for="task-input">Task:</label>
             <input class="form-control" type="text" placeholder="ex. water plants" aria-label="Enter Tasks" aria-describedby="Input Number One" id="task-input">
+            <label for="task-user">User:</label>
+            <input class="form-control" type="text" placeholder="ex. John" aria-label="Enter User" aria-describedby="Input Number One" id="task-user">
             <button class="form-control btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6" type="submit">Add</button>
 
-            <ul class="mt-2 justify-content-center" id="task-list">
+            <ul class="mt-4" id="task-list">
                 <!-- List of tasks will go here -->
               </ul>
         </form>
@@ -25,6 +28,8 @@
       const taskList = document.querySelector('#task-list');
       const taskForm = document.querySelector('#task-form');
       const taskInput = document.querySelector('#task-input');
+      const taskUser = document.querySelector('#task-user');
+
       let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
       // Load saved tasks from local storage
@@ -66,7 +71,7 @@
 
       // Edit task
       function editTask(index) {
-        const newTask = prompt('Enter new task:');
+        const newTask = prompt('Edit task:');
         if (newTask) {
           tasks[index] = newTask;
           saveTasks();
