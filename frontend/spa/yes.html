@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Swollen Farms</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body class="bg-info" style="background-image: url('farm3.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
@@ -12,11 +12,11 @@
         <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
     </div>
 
-<div class="row vw-100 justify-content-center mt-2">
+<div id="UserInformation" class="row vw-100 justify-content-center mt-2">
     <div class="bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
         <h5 style="font-weight:500; color: black" class="text-center pt-3">Sign in to Swollen Farms</h5>
         
-        <div id="UserInformation">
+        <div>
             <div class="card-body">
                 <form style="color: black">
                     <div class="container">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row row-cols-2 row-cols-lg-12 g-2 g-lg-12 justify-content-center mt-1">
                             <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6 offset-4" id="btnLogin" type="button">Login</button>
-                            <button style="color: white" type="button" class="btn btn-outline-success mb-2">Not A Member? Sign Up Here</button>
+                            <button style="color: black" type="button" class="btn btn-sm-success mb-2" id="btnNew">Not A Member? Sign Up Here</button>
                     </div>
                 </form>
         </div>
@@ -88,7 +88,7 @@
                             <input class="form-control" placeholder="ex. Texas" id="txtState" aria-label="State" aria-describedby="Eleventh Input">
                             <label for="txtZip" class="form-label pt-4">Zip Code</label>
                             <input class="form-control" placeholder="ex. 38501" id="txtZip" aria-label="Zipcode" aria-describedby="Twelth Input">
-                            <button style="color: white" class="form-control btn-sm btn btn-success mt-5 col-12 col-sm-3 col-md-6 col-lg-8" id="btnCreate"><a style="color: white" href="../Login/login.html">Create Account</a></button>
+                            <button style="color: white" class="form-control btn-sm btn btn-success mt-5 col-12 col-sm-3 col-md-6 col-lg-8" id="btnCreate">Create Account</button>
                         </form>
                     </div>
                 </div>
@@ -96,5 +96,64 @@
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    
+/* 
+    $('#btnLogin').on('click',function(){
+        $('#UserInformation').slideToggle();
+        $('#registration').slideToggle();
+    })
+*/
+
+    $('#btnNew').on('click',function(){
+        $('#UserInformation').slideToggle();
+        $('#registration').slideToggle();
+    })
+
+    $('btnCreate').on('click',function(){
+        $('#registration').slideToggle();
+    })
+    
+    $('#txtLEmail').val();
+    $('#txtLPassword').val();
+
+    var strErrorMessage = '';
+    const atSym = '@';
+    const dotCom = '.com';
+    const dotNet = '.net';
+    const dotEdu = '.edu';
+    
+    $('#btnLogin').click(function(){
+        let strLEmail = $('#txtLEmail').val();
+        let intLEmailLength = $('#txtLEmail').val().length;
+
+        let strLPassword = $('#txtLPassword').val();
+        let intLPasswordLength = $('#txtLPassword').val().length;
+        let strSpecialCharacter = "@";
+
+        var strErrorMessage = '';
+
+        if(intLEmailLength < 2 && intLPasswordLength < 1){
+            strErrorMessage += 'Please make sure that you enter a username or email and a password!';
+        }
+        else if(intLEmailLength < 2){
+            strErrorMessage += 'Please enter an username or email!';
+        }
+        else if(intLPasswordLength < 1){
+            strErrorMessage += 'Please enter a password!'
+        }
+        else if (strLEmail.includes(atSym) == false){
+            strErrorMessage += 'Your email must include an @ symbol!';
+        }
+        else if (strLEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
+            strErrorMessage += 'Your email must include .com, .net or .edu!';
+        }
+        else{
+            return false;
+        }
+        alert(strErrorMessage)
+    })
+</script>
 </body>
 </html>
