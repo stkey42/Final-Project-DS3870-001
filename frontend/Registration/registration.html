@@ -32,12 +32,14 @@
                         <input class="form-control" placeholder="ex. Jeff" id="txtUserFName" aria-label="First name" aria-describedby="First Input">
                         <label for="txtUserLName" class="form-label pt-4">Last Name</label>
                         <input class="form-control" placeholder="ex. Hemlok" id="txtUserLName" aria-label="Last name" aria-describedby="Second Input">
+                        <label for="txtIsOwner" class="form-label">Are You The Farm Owner?</label>
+                        <input class="form-control" placeholder="Please Enter Yes/No" id="txtIsOwner" aria-label="Owner Yes or No" aria-describedby="Third Input">
                         <label for="txtEmail" class="form-label pt-4">Email</label>
-                        <input class="form-control" placeholder="ex. jhemlok21@tntech.edu" id="txtEmail" aria-label="Email Address" aria-describedby="Third Input">
+                        <input class="form-control" placeholder="ex. jhemlok21@tntech.edu" id="txtEmail" aria-label="Email Address" aria-describedby="Fourth Input">
                         <label for="txtPassword" class="form-label pt-4">Password</label>
-                        <input class="form-control" id="txtPassword" placeholder="ex. shadowWizard" type="password" aria-label="Password" aria-describedby="Fourth Input">
+                        <input class="form-control" id="txtPassword" placeholder="ex. shadowWizard" type="password" aria-label="Password" aria-describedby="Fifth Input">
                         <label for="txtMobNum" class="form-label pt-4">Mobile Number</label>
-                        <input class="form-control" placeholder="ex. (931) 211-2315" id="txtMobNum" aria-label="Mobile Phone Number" aria-describedby="Fifth Input">
+                        <input class="form-control" placeholder="ex. (931) 211-2315" id="txtMobNum" aria-label="Mobile Phone Number" aria-describedby="Sixth Input">
                     </form>
                 </div>
             </div>
@@ -68,8 +70,8 @@
                         </form>
                     </div>
                 </div>
-            </div>
         </div>
+    </div>
                 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -77,6 +79,7 @@
         // first form
         $('#txtUserFName').val()
         $('#txtUserLName').val()
+        $('txtIsOwner').val();
         $('#txtEmail').val();
         $('#txtPassword').val();
         $('#txtMobNum').val();
@@ -99,6 +102,9 @@
             let strLastName = $('#txtUserLName').val();
             let intLastNameLength = $('#txtUserLName').val().length;
 
+            let strIsOwner = $('#txtIsOwner').val();
+            let intIsOwnerLength = $('#txtIsOwner').val().length;
+
             let strEmail = $('#txtEmail').val();
             let intEmailLength = $('#txtEmail').val().length;
 
@@ -110,7 +116,7 @@
 
             var strErrorMessage1 = 'Please check your data in User Information!';
 
-            if(intFirstNameLength < 1 || intLastNameLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
+            if(intFirstNameLength < 1 || intLastNameLength < 1 || intIsOwnerLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
                 alert(strErrorMessage1);
             }
 

@@ -1,17 +1,65 @@
-const express = require('express');
+// Step One
 const mysql = require('mysql');
+const express = require('express');
+const crypto = require('crypto');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { json } = require('body-parser');
+const bcrypt = require('bcrypt');
 const pool = mysql.createPool({
-    host:'localhost',
+    host: 'localhost',
     user:'root',
     password:'Mickey2023!',
-    database:'finalproject'
-})
-
+    database:'SimpleAg'
+});
 const HTTP_PORT = 8000;
-
+// Create Custom Classes
+class Session {
+    constructor(strSessionID,objUser,datStartDateTime,datLastUsedDateTime) {
+        this.SessionID = strSessionID;
+        this.User = objUser;
+        this.StartDateTime = datStartDateTime;
+        this.LastUsedDateTime = datLastUsedDateTime;
+    }
+}
+class User {
+    constructor(strEmail,strFirstName,strLastName,strMobileNumber,objFarm,blnOwner){
+        this.Email = strEmail;
+        this.FirstName = strFirstName;
+        this.LastName = strLastName;
+        this.MobileNumber = strMobileNumber;
+        this.Farm = objFarm;
+        this.FarmOwner = blnOwner;
+    }
+}
+class Farm {
+    constructor(strFarmID,strFarmName,strStreetAddress1,strStreetAddress2,strCity,strState,strZIP) {
+        this.FarmID = strFarmID;
+        this.FarmName = strFarmName;
+        this.StreetAddress1 = strStreetAddress1;
+        this.StreetAddress2 = strStreetAddress2;
+        this.City = strCity;
+        this.State = strState;
+        this.ZIPCode = strZIP;
+    }
+}
+class Product {
+    constructor(strProductID,strShortName,strLongName,strDescription,strStatus,objFarm){
+        this.ProductID = strProductID;
+        this.ShortName = strShortName;
+        this.LongName = strLongName;
+        this.Description = strDescription;
+        this.Status = strStatus;
+        this.Farm = objFarm;
+    }
+}
+class Message {
+    constructor(strType,strMessage){
+        this.Type = strType;
+        this.Message = strMessage;
+    }
+}
+// End Step One
+//Step Two
 var app = express();
 app.use(cors());
 app.use(express.json());
@@ -19,12 +67,18 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.text());
-
+// End Step Two
+// Step Three
+function uuidv4() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+}
 app.listen(HTTP_PORT, () => {
-    console.log('Our server is listening on port ' + HTTP_PORT);
-})
-
-
+    console.log("Server is listening on port " + HTTP_PORT);
+});
+//End Step Three
+// Step Four Users
 app.post("/users", (req,res,next) => {
     let strFirstName = req.query.firstname || req.body.firstname;
     let strLastName = req.query.lastname || req.body.lastname;
@@ -239,3 +293,118 @@ app.post("/position",(req,res,next)=> {
     })
     
 })
+app.get("/tasks", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblTasks WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/unitofmeasure", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblUnitOfMeasure WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/harvests", (req,res,next) => {
+    let strSessionID = req.query.sessionid || req.body.sessionid;
+    getSessionDetails(strSessionID,function(objSession){
+        pool.query("SELECT * FROM tblHarvests WHERE FarmID = ?",objSession.Farm.FarmID, function(error,results){
+            if(!error){
+                res.status(200).send(results)
+            } else {
+                let objError = new Message("Error",error);
+                res.status(400).send(objError);
+            }
+            
+        })
+    })
+})
+app.get("/test", (req,res,next)=>{
+    let strFarmID = req.query.farmid || req.body.farmid;
+    console.log(strFarmID);
+    getFarmByID(strFarmID,function(objFarm){
+        if(objFarm){
+            res.status(200).send(objFarm);
+        } else {
+            let objError = new Message("Error","Farm Does Not Exist");
+            res.status(400).send(objError);
+        }
+        
+    })
+})
+// End Step Four
+// Step Five
+function getSessionDetails(strSessionID,callback){
+    pool.query('SELECT * FROM tblSessions LEFT JOIN tblUsers ON tblSessions.UserID = tblUsers.Email LEFT JOIN tblFarmAssignment ON tblSessions.UserID = tblFarmAssignment.User WHERE SessionID = ?',[strSessionID], function(error, results){
+        if(!error){
+            let objFarm;
+            getFarmByID(strFarmID,function(objReturnedFarm){
+                objFarm = objReturnedFarm;
+                let objUser = new User(results[0].Email,results[0].FirstName,results[0].LastName,results[0].MobileNumber,objFarm,results[0].IsOwner);
+                let objSession = new Session(results[0].SessionID,objUser,results[0].StartDateTime,null);
+                return objSession;
+            })
+            
+        } else {
+          return null;
+        }
+    })
+}
+// Example function using the async pool.query with a callback
+function getFarmByID(strFarmID,callback){
+    pool.query('SELECT * FROM tblFarms WHERE FarmID = ?',[strFarmID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Farm(results[0].FarmID,results[0].FarmName,results[0].StreetAddress1,results[0].StreetAddress2,results[0].City,results[0].State,results[0].ZIP));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getFarmByUserID(strUserID,callback){
+    pool.query('SELECT tblFarms.* FROM tblFarmAssignment LEFT JOIN tblFarm ON tblFarmAssignment.FarmID = tblFarm.FarmID WHERE User = ?',[strUserID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                callback(new Farm(results[0].FarmID,results[0].FarmName,results[0].StreetAddress1,results[0].StreetAddress2,results[0].City,results[0].State,results[0].ZIP));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+function getUserBySessionID(strSessionID,callback){
+    pool.query('SELECT * FROM tblUsers LEFT JOIN tblFarmAssignments ON tblUsers.Email = tblFarmAssingments.User LEFT JOIN tblFarms ON tblFarmAssignments.FarmID = tblFarms.FarmID WHERE Email = (SELECT UserID FROM tblSessions WHERE SessionID = ?',[strSessionID], function(error, results){
+        if(!error){
+            if(results.length > 0){
+                console.log(results);
+                callback(new User(results[0].Email,results[0].FirstName,results[0].LastName,results[0].MobileNumber,null,null));
+            } else {
+                callback(null);
+            }
+        } else {
+          callback(null);
+        }
+    })
+}
+// End Step Five
