@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #F8F8F8;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: #FFF;
+        padding: 10px;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+      }
+      .container {
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #ffc107;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #999;
+        position: relative;
+        object-position: center;
+      }
+      .button {
+        display: inline-block;
+        background-color: #333;
+        color: #FFF;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg-info" style="background-image: url('farm3.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
+    <header>
+      <h1>Employee Dashboard</h1>
+    </header>
+    <div class="bg-warning container">
+      <h2>Welcome, Group 8!</h2>
+      <p>Here's your to-do list for today:</p>
+      <ul id="task-list">
+      
+      </ul>
+
+      <form id="task-form">
+        <input type="text" id="task-input">
+        <button type="submit">Create Task</button>
+        <button class="pt-2">Edit Task</button>
+      </form>
+    
+    </div>
+
+    <script>
+      const taskList = document.getElementById('task-list');
+      const taskForm = document.getElementById('task-form');
+      
+      // Add task to list when form is submitted
+      taskForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const taskInput = document.getElementById('task-input');
+        const newTask = document.createElement('li');
+        newTask.textContent = taskInput.value;
+        taskList.appendChild(newTask);
+        taskInput.value = '';
+      });
+      
+      // Delete task when clicked
+      taskList.addEventListener('click', function(event) {
+        const clickedItem = event.target;
+        clickedItem.parentNode.removeChild(clickedItem);
+      });
+
+      taskList.addEventListener('dblclick', function(event) {
+			const clickedItem = event.target;
+			const originalText = clickedItem.textContent;
+			const editInput = document.createElement('input');
+			editInput.type = 'text';
+			editInput.value = originalText;
+			clickedItem.textContent = '';
+			clickedItem.appendChild(editInput);
+			editInput.focus();
+			editInput.addEventListener('blur', function() {
+				clickedItem.textContent = editInput.value;
+			});
+		});
+      </script>
+
+  </body>
+</html>

@@ -15,7 +15,9 @@
             <label for="task-input">Task:</label>
             <input class="form-control" type="text" placeholder="ex. water plants" aria-label="Enter Tasks" aria-describedby="Input Number One" id="task-input">
             <label for="task-user">User:</label>
-            <input class="form-control" type="text" placeholder="ex. John" aria-label="Enter User" aria-describedby="Input Number One" id="task-user">
+            <input class="form-control" type="text" placeholder="ex. John" aria-label="Enter User" aria-describedby="Input Number Two" id="task-user">
+            <label for="task-harvest">Harvest Amount:</label>
+            <input class="form-control" type="number" placeholder="ex. 20lbs" aria-label="Enter Harvest" aria-describedby="Input Number Three" id="task-harvest">
             <button class="form-control btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6" type="submit">Add</button>
 
             <ul class="mt-4" id="task-list">
@@ -29,8 +31,11 @@
       const taskForm = document.querySelector('#task-form');
       const taskInput = document.querySelector('#task-input');
       const taskUser = document.querySelector('#task-user');
+      const taskHarvest = document.querySelector('#task-harvest');
 
       let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      let harvest = JSON.parse(localStorage.getItem('harvest')) || [];
 
       // Load saved tasks from local storage
       function loadTasks() {
