@@ -19,17 +19,20 @@
         text-align: center;
       }
       h1 {
+        text-align: center;
+        margin: 0;
+      }
+      h2 {
+        text-align: center;
         margin: 0;
       }
       .container {
-        margin: 20px auto;
+        margin: auto;
         max-width: 800px;
         background-color: #ffc107;
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 10px;
         box-shadow: 0px 0px 10px #999;
-        position: relative;
-        object-position: center;
       }
       .button {
         display: inline-block;
@@ -49,55 +52,84 @@
     <header>
       <h1>Employee Dashboard</h1>
     </header>
-    <div class="bg-warning container">
-      <h2>Welcome, Group 8!</h2>
-      <p>Here's your to-do list for today:</p>
-      <ul id="task-list">
-      
+  <div class="col-9 col-sm-10 col-md-8 col-lg-6 card">
+    <div class="bg-warning card-body container">
+      <h2>Welcome Employee!</h2>
+      <h3>Here's your to-do list for today:</h3>
+
+      <ul style="font-size: large;" id="task-list">
+        <li>Harvest 20lb Tomatoes</li>
+        <li>Water Sunflowers</li>
+        <li>Till Garden</li>
       </ul>
 
       <form id="task-form">
         <input type="text" id="task-input">
-        <button type="submit">Create Task</button>
-        <button class="pt-2">Edit Task</button>
+        <button id="btnCreate" type="submit">Create Task</button>
       </form>
-    
+      
     </div>
+  </div>
 
-    <script>
-      const taskList = document.getElementById('task-list');
-      const taskForm = document.getElementById('task-form');
+  <script>
+  
+
+  const taskList = document.getElementById('task-list');
+  const taskForm = document.getElementById('task-form');
+
+  // Listen for clicks on the "Edit" button for each task
+  taskList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('edit-button')) {
+      const taskText = event.target.previousElementSibling;
+      const inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.value = taskText.textContent;
+      taskText.replaceWith(inputField);
+      event.target.textContent = 'Save';
+      event.target.classList.add('save-button');
+      event.target.classList.remove('edit-button');
+    } else if (event.target.classList.contains('save-button')) {
+      const inputField = event.target.previousElementSibling;
+      const taskText = document.createElement('span');
+      taskText.classList.add('task-text');
+      taskText.textContent = inputField.value;
+      inputField.replaceWith(taskText);
+      event.target.textContent = 'Edit';
+      event.target.classList.add('edit-button');
+      event.target.classList.remove('save-button');
+    }
+  });
       
-      // Add task to list when form is submitted
-      taskForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const taskInput = document.getElementById('task-input');
-        const newTask = document.createElement('li');
-        newTask.textContent = taskInput.value;
-        taskList.appendChild(newTask);
-        taskInput.value = '';
-      });
-      
-      // Delete task when clicked
-      taskList.addEventListener('click', function(event) {
-        const clickedItem = event.target;
-        clickedItem.parentNode.removeChild(clickedItem);
-      });
+  // Add task to list when form is submitted
+  taskForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const taskInput = document.getElementById('task-input');
+    const newTask = document.createElement('li');
+    newTask.textContent = taskInput.value;
+    taskList.appendChild(newTask);
+    taskInput.value = '';
+  });
+  
+  // Delete task when clicked
+  taskList.addEventListener('click', function(event) {
+    const clickedItem = event.target;
+    clickedItem.parentNode.removeChild(clickedItem);
+  });
 
-      taskList.addEventListener('dblclick', function(event) {
-			const clickedItem = event.target;
-			const originalText = clickedItem.textContent;
-			const editInput = document.createElement('input');
-			editInput.type = 'text';
-			editInput.value = originalText;
-			clickedItem.textContent = '';
-			clickedItem.appendChild(editInput);
-			editInput.focus();
-			editInput.addEventListener('blur', function() {
-				clickedItem.textContent = editInput.value;
-			});
-		});
-      </script>
-
-  </body>
+  taskList.addEventListener('dblclick', function(event) {
+  const clickedItem = event.target;
+  const originalText = clickedItem.textContent;
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.value = originalText;
+  clickedItem.textContent = '';
+  clickedItem.appendChild(editInput);
+  editInput.focus();
+  editInput.addEventListener('blur', function() {
+    clickedItem.textContent = editInput.value;
+  });
+});
+ 
+</script>
+</body>
 </html>
