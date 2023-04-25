@@ -27,10 +27,10 @@
                     </div>
                     <h6 class="text-center mt-3">Or</h6>
 
-                        <label style="font-weight: 600" for="txtLEmail" class="form-label pt-1">Username or Email</label>
-                        <input class="form-control" id="txtLEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One"><br>
-                        <label style="font-weight: 600" for="txtLPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
-                        <input class="form-control" id="txtLPassword" placeholder="ex. codingIsKewl123" type="password">
+                        <label style="font-weight: 600" for="txtEmail" class="form-label pt-1">Username or Email</label>
+                        <input class="form-control" id="txtEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One"><br>
+                        <label style="font-weight: 600" for="txtPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
+                        <input class="form-control" id="txtPassword" placeholder="ex. codingIsKewl123" type="password">
                     </div>
                     <div class="row row-cols-2 row-cols-lg-12 g-2 g-lg-12 justify-content-center mt-1">
                             <button style="color: white"; class="m-3 btn btn-success btn-sm mt-2 col-6 col-sm-4 col-md-5 col-lg-6 offset-4" id="btnLogin" type="button">Login</button>
@@ -118,8 +118,8 @@
         $('#registration').slideToggle();
     })
     
-    $('#txtLEmail').val();
-    $('#txtLPassword').val();
+    $('#txtEmail').val();
+    $('#txtPassword').val();
 
     var strErrorMessage = '';
     const atSym = '@';
@@ -127,29 +127,29 @@
     const dotNet = '.net';
     const dotEdu = '.edu';
     
-    $('#btnLogin').click(function(){
-        let strLEmail = $('#txtLEmail').val();
-        let intLEmailLength = $('#txtLEmail').val().length;
+    $(document).on('click','#btnLogin',function(){
+        let strEmail = $('#txtEmail').val();
+        let intEmailLength = $('#txtEmail').val().length;
 
-        let strLPassword = $('#txtLPassword').val();
-        let intLPasswordLength = $('#txtLPassword').val().length;
+        let strPassword = $('#txtPassword').val();
+        let intPasswordLength = $('#txtPassword').val().length;
         let strSpecialCharacter = "@";
 
         var strErrorMessage = '';
 
-        if(intLEmailLength < 2 && intLPasswordLength < 1){
+        if(intEmailLength < 2 && intLPasswordLength < 1){
             strErrorMessage += 'Please make sure that you enter a username or email and a password!';
         }
-        else if(intLEmailLength < 2){
+        else if(intEmailLength < 2){
             strErrorMessage += 'Please enter an username or email!';
         }
-        else if(intLPasswordLength < 1){
+        else if(intPasswordLength < 1){
             strErrorMessage += 'Please enter a password!'
         }
-        else if (strLEmail.includes(atSym) == false){
+        else if (strEmail.includes(atSym) == false){
             strErrorMessage += 'Your email must include an @ symbol!';
         }
-        else if (strLEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
+        else if (strEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
             strErrorMessage += 'Your email must include .com, .net or .edu!';
         }
         else{
@@ -157,6 +157,76 @@
         }
         alert(strErrorMessage)
     })
+
+    $('#txtUserFName').val()
+        $('#txtUserLName').val()
+        $('txtIsOwner').val();
+        $('#txtEmail').val();
+        $('#txtPassword').val();
+        $('#txtMobNum').val();
+        var strErrorMessage = '';
+
+        $('#txtFarmId').val();
+        $('#txtFarmName').val();
+        $('#txtAddress').val();
+        $('#txtAddress2').val();
+        $('#txtCity').val();
+        $('#txtState').val();
+        $('#txtZip').val();
+        var secErrorMessage = '';
+
+        $(document).on('click','#btnCreate',function(){
+            let strFirstName = $('#txtUserFName').val();
+            let intFirstNameLength = $('#txtUserFName').val().length;
+            
+            let strLastName = $('#txtUserLName').val();
+            let intLastNameLength = $('#txtUserLName').val().length;
+
+            let strIsOwner = $('#txtIsOwner').val();
+            let intIsOwnerLength = $('#txtIsOwner').val().length;
+
+            let strEmail = $('#txtEmail').val();
+            let intEmailLength = $('#txtEmail').val().length;
+
+            let strPassword = $('#txtPassword').val();
+            let intPasswordLength = $('#txtPassword').val().length;
+
+            let intMobNum = $('#txtMobNum').val();
+            let intMobNumLength = $('#txtMobNum').val().length;
+
+            var strErrorMessage1 = 'Please check your data in User Information!';
+
+            if(intFirstNameLength < 1 || intLastNameLength < 1 || intIsOwnerLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
+                alert(strErrorMessage1);
+            }
+
+            let strFarmId = $('#txtFarmId').val();
+            let intFarmIdLength = $('#txtFarmId').val().length;
+            
+            let strFarmName = $('txtFarmName').val();
+            let intFarmNameLength = $('txtFarmName').val().length;
+
+            let strAddress = $('#txtAddress1').val();
+            let intAddressLength = $('#txtAddress1').val().length;
+
+            let strAddress2 = $('#txtAddress2').val();
+            let intAddress2Length = $('#txtAddress2').val().length;
+
+            let strCity = $('#txtCity').val();
+            let intCityLength = $('#txtCity').val().length;
+            
+            let strState = $('#txtState').val();
+            let intStateLength = $('#txtState').val().length;
+
+            let intZip = $('#txtZip').val();
+            let intZipLength = $('#txtZip').val().length;
+
+            var strErrorMessage2 = 'Please check your data in Location Details!';
+
+            if(intFarmIdLength  < 1 || intFarmNameLength < 1 || intAddressLength < 1 || intAddress2Length < 1 || intCityLength < 1 || intStateLength < 1 || intZipLength < 1){
+                alert(strErrorMessage2);
+            }
+        })
 </script>
 </body>
 </html>

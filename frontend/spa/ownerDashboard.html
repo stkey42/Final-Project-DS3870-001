@@ -15,14 +15,14 @@
         <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
     </div>
 
-<div class="row vw-100 justify-content-center mt-2">
+<div class="row vw-100 justify-content-center mt-2" id="ownerDashboard">
     <div class="bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
         <h4 style="font-weight:500; color: black" class="text-center pt-2">Welcome Back!</h4>
         <h6 style="font-weight:500; color: black" class="text-center pt-1">What Would You Like To Do Today?</h6>
             <div class="card-body">
-                <button class="btn btn-success btn-md" type="submit">Go To My Employee Dashboard</button>
-                <button class="btn btn-success btn-md" type="submit">Go To My Farm Dashboard</button>
-                <button class="btn btn-danger btn-md" type="submit">Logout</button>
+                <button class="btn btn-success btn-md" type="submit" id="btnDashboard">Go To My Employee Dashboard</button>
+                <button class="btn btn-success btn-md" type="submit" id="btnInventory">Go To My Farm Dashboard</button>
+                <button class="btn btn-danger btn-md" type="submit" id="btnLogout">Logout</button>
             </div>
     </div>
 </div>
@@ -31,5 +31,21 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    $('#btnDashboard').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#dashboard').slideToggle();
+    })
+
+    $('#btnInventory').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#inventory').slideToggle();
+    })
+
+    $('#btnLogout').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#UserInformation').slideToggle();
+    })
+</script>
 </body>
 </html>
