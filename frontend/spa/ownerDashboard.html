@@ -9,24 +9,76 @@
         @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('farm3.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        #text {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        h3 {
+            font-family: 'Rancho', cursive;
+            color: #554d42;
+            font-size: xx-large;
+        }
+        .btn-outline-light {
+            border-color: #554d42;
+            color: #554d42;
+        }
+        .btn-outline-light:hover {
+            background-color: #554d42;
+            border-color: #554d42;
+            color: white;
+        }
+        .bg-dark {
+            background-color: rgba(240, 227, 198, 0.7);
+            border: none;
+        }
+        h2, h4 {
+            color: #554d42;
+            font-weight: bold;
+        }
+        .btn {
+            border-radius: 50px;
+            width: 200px;
+            height: 60px;
+        }
+    </style>
 </head>
-<body class="bg-info" style="background-image: url('farm3.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover">
-    <div id="text" class="text-block text-center pt-3">
-        <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
-    </div>
-
-<div class="row vw-100 justify-content-center mt-2" id="ownerDashboard">
-    <div class="bg-warning col-8 col-sm-10 col-md-8 col-lg-6 card mt-2">
-        <h4 style="font-weight:500; color: black" class="text-center pt-2">Welcome Back, Owner!</h4>
-        <h6 style="font-weight:500; color: black" class="text-center pt-1">What Would You Like To Do Today?</h6>
-            <div class="text-center card-body">
-                <button class="btn btn-success btn-md" type="submit" id="btnDashboard">Go To My Employee Dashboard</button>
-                <button class="btn btn-success btn-md" type="submit" id="btnInventory">Go To My Farm Dashboard</button>
-                <button class="btn btn-danger btn-md" type="submit" id="btnLogout">Logout</button>
+    <body class="bg-info">
+        <div id="text" class="text-block text-center pt-3">
+            <h3>Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
+        </div>
+        
+        <div class="row vw-100 justify-content-center align-items-center mt-5" id="ownerDashboard">
+            <div class="bg-light col-10 col-md-8 col-lg-6 card p-3">
+                <h2 class="text-center mb-4" style="color: #6c8f6d; font-weight: bold;">Welcome Back, Farmer!</h2>
+                <h4 class="text-center mb-4" style="color: #6c8f6d; font-weight: bold;">What Would You Like To Do Today?</h4>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnDashboard"><i class="fas fa-seedling me-2"></i>Plant Care</button>
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnInventory"><i class="fas fa-shovel me-2"></i>Farm Maintenance</button>
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnLogout"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
+                  </div>
             </div>
-    </div>
-</div>
-            
+        </div>
+
+        <div class="row vw-100 justify-content-center align-items-center mt-5" id="ownerDashboard">
+            <div class="bg-success col-10 col-md-8 col-lg-6 card p-3">
+                <h2 class="text-center mb-4">Welcome Back, Farmer!</h2>
+                <h4 class="text-center mb-4">What Would You Like To Do Today?</h4>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnDashboard"><i class="fas fa-seedling me-2"></i>Plant Care</button>
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnInventory"><i class="fas fa-shovel me-2"></i>Farm Maintenance</button>
+                    <button class="btn btn-outline-light btn-lg m-2" type="submit" id="btnLogout"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
+                </div>
+            </div>
+        </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

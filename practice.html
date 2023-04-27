@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<style>
+body {
+background-color: #F2E8D7;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+  border-radius: 5px;
+  border: 1px solid #D3D3D3;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+}
+
+button[type="button"] {
+  background-color: #9CB84D;
+  border: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+</style>
+
+</head>
+<body>
+
+    <div id="divLogo" class="text-block text-center">
+        <h3 style="font-family: 'Rancho', cursive; color:black; font-size:xx-large;">Swollen Farms<img class="ms-2" style="transform: scaleX(-1)" src="hippo.png" alt="Hippo" width="50" height="60"></h3>
+    </div>
+
+    <div class="container">
+  <form class="form" style="color: black; font-weight: 600">
+    <fieldset>
+      <legend>Employee Information</legend>
+      <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input class="form-control" type="text" id="fname" name="fname">
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input class="form-control"  type="text" id="lname" name="lname">
+      </div>
+
+      <div class="form-group">
+        <label for="position">Position:</label>
+        <input class="form-control"  type="text" id="position" name="position">
+      </div>
+
+      <div class="form-group">
+        <label for="pay-rate">Pay Rate:</label>
+        <input class="form-control"  type="text" id="pay-rate" name="pay-rate">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Farm Details</legend>
+      <div class="form-group">
+        <label for="farm-name">Farm Name:</label>
+        <input class="form-control"  type="text" id="farm-name" name="farm-name">
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input class="form-control"  type="text" id="location" name="location">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Employee Tasks</legend>
+      <div class="form-group">
+        <label for="todaysTask">Today's Task:</label>
+        <input class="form-control"  type="text" id="todaysTask" name="todaysTask">
+      </div>
+
+      <div class="form-group">
+        <label for="products">Products:</label>
+        <textarea class="form-control"  id="products" name="products"></textarea>
+      </div>
+    </fieldset>
+
+    <button class="btn btn-success btn-sm" type="button" id="btnPost">Submit</button>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
