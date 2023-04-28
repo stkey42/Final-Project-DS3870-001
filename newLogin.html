@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Fresh Farms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: #F3F3F3;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            color: #36454F;
+        }
+
+        form {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            width: 500px;
+            max-width: 90%;
+            margin: auto;
+            padding: 50px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #36454F;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #F3F3F3;
+            color: #36454F;
+        }
+
+        input[type="submit"] {
+            background-color: #9CB84D;
+            border: none;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #7DA33E;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .terms {
+            font-size: 14px;
+            color: #36454F;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .terms a {
+            color: #9CB84D;
+        }
+
+        .error {
+            color: #FF0000;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Join Fresh Farms Today</h1>
+  <div id="divRegister">
+    <form>
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lane" placeholder="Enter your last name">
+      </div>
+        <div class="form-group">
+            <label for="yes_no">Are You The Farm Owner:</label>
+            <p>
+              <input type="radio" name="yes_no" checked>Yes</input>
+              </p>
+              <p>
+              <input type="radio" name="yes_no">No</input>
+              </p>
+          </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter your phone #">
+  </div>
+
+  <button class="btnHit btn btn-success btn-md">Continue</button>
+
+</div>
+
+<div style="display:none" id="divFarm">
+  <form>
+      <div class="form-group">
+          <label for="fname">Farm ID:</label>
+          <input type="text" id="farmID" name="farmID" placeholder="Enter your FarmID">
+      </div>
+      <div class="form-group">
+        <label for="str1">Street Address 1:</label>
+        <input type="text" id="str1" name="str1" placeholder="Enter your street address">
+    </div>
+    <div class="form-group">
+      <label for="str2">Street Address 2:</label>
+      <input type="text" id="str2" name="str2" placeholder="Enter your street address 2">
+  </div>
+      
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password">
+  </div>
+  <div class="form-group">
+    <label for="phone">Email:</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter your phone #">
+</div>
+</div>
+
+  <button class="btnHit">Continue</button>
+
+  <script>
+    $('.btnHit').on('click',function(){
+        $('#divRegister').slideToggle();
+        $('#divFarm').slideToggle();
+    })
+  </script>
+</body>
+</html>
