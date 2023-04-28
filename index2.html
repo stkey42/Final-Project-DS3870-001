@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swollen Farms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        color: #006747;
+        margin-bottom: 0.5rem;
+    }
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+        font-size: 1rem;
+        color: #666;
+    }
+    body {
+        font-family: Helvetica, Arial, sans-serif;  
+        background-image: url('clover.jpg'); 
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover;
+        background-color: #F3F3F3;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: #000000;
+    }
+
+    .card{
+        background-color:  #F5DEB3;
+    }
+    form {
+        background-color:  #F5DEB3;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        width: 500px;
+        max-width: 90%;
+        margin: auto;
+        padding: 50px;
+    }
+
+    label {
+        font-size: 18px;
+        color: #36454F;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: #F3F3F3;
+        color: #36454F;
+    }
+
+    input[type="submit"] {
+        background-color: #9CB84D;
+        border: none;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #7DA33E;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .terms {
+        font-size: 14px;
+        color: #36454F;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .terms a {
+        color: #9CB84D;
+    }
+
+    /* Media Queries */
+    @media (max-width: 767px) {
+        form {
+            padding: 30px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+        }
+    }
+    #header {
+      background-color: #ffffff;
+      height: 60px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #header h1 {
+      font-size: 24px;
+      font-weight: 400;
+      margin: 0;
+    }
+</style>
+
+</head>
+<body>
+  <div id="header">
+    <h1 class="me-1">Swollen Farms</h1> <img src="hippo.png" alt="hippo" height="40" width="40">
+  </div>
+  <div id="divLogin" class="row vw-100 justify-content-center mt-5">
+      <div class="col-8 col-sm-10 col-md-8 col-lg-6 mt-2">
+          <form style="color: black">
+              
+                  <label style="font-weight: 600" for="txtEmail" class="form-label pt-1">Username or Email</label>
+                  <input class="form-control" id="txtEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One"><br>
+                  <label style="font-weight: 600" for="txtPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
+                  <input class="form-control" id="txtPassword" placeholder="ex. codingIsKewl123" type="password">
+                  <div class="row justify-content-center mt-2">
+                    <button style="color: white" class="btnTrade btn btn-success btn-sm mt-3 col-8" id="btnLogin" type="button">
+                      <i class="fas fa-sign-in-alt mr-2 me-2"></i>Login
+                    </button>
+                  </div>
+                  <div class="row justify-content-center mt-3">
+                    <button style="color: white" class="btnLogout btn btn-danger btn-sm col-8" id="btnOwner" type="button">
+                      <i class="fas fa-user-tie mr-2 me-2"></i>Owner Login
+                    </button>
+                  </div>
+                  <div class="row justify-content-center mt-3">
+                    <button style="color: black" type="button" class="btnHit btn btn-sm-success py-2 col-10" id="btnNew">
+                      <i class="fas fa-user-plus mr-2 me-2"></i>Not A Member? Sign Up Here
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        <div>
+
+    <div class="mt-5" style="display: none;" id="divRegister">
+		<form>
+			<div>
+				<label for="fname">First Name:</label>
+				<input type="text" id="fname" name="fname" placeholder="Enter your first name">
+				<label for="lname">Last Name:</label>
+				<input type="text" id="lname" name="lane" placeholder="Enter your last name">
+				<label for="yes_no">Are You The Farm Owner:</label>
+				<p>
+					<input type="radio" name="yes_no" checked>Yes</input>
+				</p>
+				<p>
+					<input type="radio" name="yes_no">No</input>
+				</p>
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" placeholder="Enter your email">
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" placeholder="Enter your password">
+				<label for="phone">Phone Number:</label>
+				<input type="text" id="phone" name="phone" placeholder="Enter your phone #">
+			</div>
+
+			<button class="text-center btn btn-success btnSwap btn-sm mt-2" type="button">Continue</button>
+		</form>
+	</div>
+
+	<div class="mt-5" style="display: none;" id="divFarm">
+		<form>
+			<div>
+				<label for="farmID">Farm ID:</label>
+				<input type="text" id="farmID" name="farmID" placeholder="Enter your FarmID">
+                <label class="text-center" for="or">Or</label>
+                <label for="farmName">Farm Name:</label>
+				<input type="text" id="farmName" name="farmName" placeholder="Enter your Farm's Name'">
+				<label for="str1">Street Address 1:</label>
+				<input type="text" id="str1" name="str1" placeholder="Enter your street address">
+				<label for="str2">Street Address 2:</label>
+                <input type="text" id="str2" name="str2" placeholder="Enter your street address">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" placeholder="Enter your state">
+                <label for="ZIP">ZIP Code:</label>
+                <input type="text" id="ZIP" name="ZIP" placeholder="Enter your ZIP code">
+
+            </div>
+            <button class="text-center btn btn-success btnNew btn-sm mt-2" type="button">Submit</button>
+        </form>
+    </div>
+
+    <div id="ownerDashboard" style="display:none" class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-4">Owner Dashboard</h3>
+                <div class="d-grid gap-2">
+                 <button class="btnHarvest btn btn-success btn-md mb-3">
+                    <i class="fas fa-tractor me-2"></i>Farm Dashboard</button>
+                  <button class="btnEmployee btn btn-success btn-md mb-3">
+                    <i class="fas fa-users me-2"></i>Employee Dashboard</button>
+                  <button class="btnLogout btn btn-danger btn-md">
+                    <i class="fas fa-sign-out-alt me-2"></i>Sign Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: none;" class="row vw-100 justify-content-center mt-5" id="divEmployee">
+        <div class="col-10 col-sm-8 col-md-8 col-lg-6 mt-2">
+          <form class="mt-2" style="color: #000000; font-weight: 600;">
+            <fieldset>
+              <legend class="text-success mb-3"><i class="fas fa-user mr-2"></i>Employee Information</legend>
+              <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input class="form-control" type="text" id="fname" name="fname">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input class="form-control" type="text" id="lname" name="lname">
+              </div>
+              <div class="form-group">
+                <label for="position">Position:</label>
+                <input class="form-control" type="text" id="position" name="position">
+              </div>
+              <div class="form-group">
+                <label for="pay-rate">Pay Rate:</label>
+                <input class="form-control" type="text" id="pay-rate" name="pay-rate">
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend class="text-success mb-3"><i class="fas fa-map-marker-alt mr-2"></i>Farm Details</legend>
+              <div class="form-group">
+                <label for="farm-name">Farm Name:</label>
+                <input class="form-control" type="text" id="farm-name" name="farm-name">
+              </div>
+              <div class="form-group">
+                <label for="location">Location:</label>
+                <input class="form-control" type="text" id="location" name="location">
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend class="text-success mb-3"><i class="fas fa-tasks mr-2"></i>Employee Tasks</legend>
+              <div class="form-group">
+                <label for="todaysTask">Today's Task:</label>
+                <input class="form-control" type="text" id="todaysTask" name="todaysTask">
+              </div>
+              <div class="form-group">
+                <label for="products">Products:</label>
+                <textarea class="form-control" id="products" name="products"></textarea>
+              </div>
+            </fieldset>
+            <button class="btnOwner btn btn-success btn-md mt-3" type="button" id="btnPost"><i class="fas fa-paper-plane mr-2"></i>Submit</button>
+          </form>
+        </div>
+      </div>
+
+    <div style="display:none" id="divHarvest" class="row justify-content-center mt-5">
+        <div class="col-10 col-md-8 col-lg-6 card mt-2 p-0">
+          <h4 class="text-center pt-3">Current Harvests</h4>
+          <div id="Inventory">
+            <div class="card-body" style="background-color: #F5DEB3;">
+              <table class="table table-bordered table-striped" style="background-color: #FFF8DC;">
+                <thead class="bg-success text-light">
+                  <tr>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Weight</th>
+                    <th scope="col">Sale Price</th>
+                    <th scope="col">Harvested By</th>
+                    <th scope="col">Harvest Date</th>
+                    <th scope="col">Farm Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><i class="fas fa-carrot mr-3" style="color: #228B22;"></i>Cabbage</td>
+                    <td>4</td>
+                    <td>12.6lbs</td>
+                    <td>$5.00/lb</td>
+                    <td>John Doe</td>
+                    <td>August 11th</td>
+                    <td>Franklin's Friendly Farm</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-tomato mr-3" style="color: #FF6347;"></i>Tomato</td>
+                    <td>15</td>
+                    <td>7.3lbs</td>
+                    <td>$2.99/lb</td>
+                    <td>John Jackson</td>
+                    <td>July 28th</td>
+                    <td>Tom's Tomatoes</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-drumstick-bite mr-3" style="color: #8B4513;"></i>Grass Fed Beef Cuts</td>
+                    <td>5</td>
+                    <td>11.4lbs</td>
+                    <td>$14.99/lb</td>
+                    <td>Becky Smith</td>
+                    <td>July 28th</td>
+                    <td>Bob's and Becky's Beef</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-drumstick mr-3" style="color: #CD853F;"></i>Free Range Chickens</td>
+                    <td>9</td>
+                    <td>105.5lbs</td>
+                    <td>$7.55/lb</td>
+                    <td>Roy Koger</td>
+                    <td>August 5th</td>
+                    <td>Chicken's Haven Farm</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btnBack btn btn-md btn-danger" type="button">Back To Dashboard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container justify-content-center mt-5" style="max-width: 500px; display:none" id="divEmployeeTask">
+        <div class="card">
+          <div class="card-body container">
+            <h2 class="text-center mb-4">Welcome Employee!</h2>
+            <h4 class="text-center mb-4">Here's your to-do list for today:</h4>
+            <ul class="text-center list-unstyled mb-4" id="task-list">
+              <li class="py-2"><i class="fas fa-seedling me-2"></i>Harvest 20lb Tomatoes</li>
+              <li class="py-2"><i class="fas fa-tint me-2"></i>Water Sunflowers</li>
+              <li class="py-2"><i class="fas fa-seedling me-2"></i>Harvest 10lb Blueberries</li>
+              <li class="py-2"><i class="fas fa-tint me-2"></i>Till Garden</li>
+            </ul>
+            <form style="background-color: white;" id="task-form" class="mb-4">
+              <div>
+                <label for="task-input" class="me-2 visually-hidden">Enter Task:</label>
+                <input type="text" id="task-input" class="form-control" placeholder="Enter task">
+                <button class="btn btn-success btn-sm" id="btnCreate" type="submit"><i class="fas fa-plus me-2"></i>Create Task</button>
+              </div>
+            </form>
+            <button class="btn btn-md btn-danger mt-2 btnTrade"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
+          </div>
+        </div>
+      </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+
+    $('.btnTrade').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+
+    $('.btnHit').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divRegister').slideToggle();
+    })
+
+    $('.btnNew').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divFarm').slideToggle();
+    })    
+
+    $('.btnSwap').on('click',function(){
+        $('#divRegister').slideToggle();
+        $('#divFarm').slideToggle();
+    })
+
+    $('.btnLogout').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#ownerDashboard').slideToggle();
+    })
+
+    $('.btnHarvest').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divHarvest').slideToggle();
+    })
+
+    $('.btnEmployee').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divEmployee').slideToggle();
+    })
+    
+    $('.btnBack').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divHarvest').slideToggle();
+    })
+
+    $('.btnOwner').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divEmployee').slideToggle();
+    })
+    
+
+/*
+    $('#txtEmail').val();
+    $('#txtPassword').val();
+
+    var strErrorMessage = '';
+    const atSym = '@';
+    const dotCom = '.com';
+    const dotNet = '.net';
+    const dotEdu = '.edu';
+    
+    $(document).on('click','#btnLogin',function(){
+        let strEmail = $('#txtEmail').val();
+        let intEmailLength = $('#txtEmail').val().length;
+
+        let strPassword = $('#txtPassword').val();
+        let intPasswordLength = $('#txtPassword').val().length;
+        let strSpecialCharacter = "@";
+
+        var strErrorMessage = '';
+
+        if(intEmailLength < 2 && intLPasswordLength < 1){
+            strErrorMessage += 'Please make sure that you enter a username or email and a password!';
+        }
+        else if(intEmailLength < 2){
+            strErrorMessage += 'Please enter an username or email!';
+        }
+        else if(intPasswordLength < 1){
+            strErrorMessage += 'Please enter a password!'
+        }
+        else if (strEmail.includes(atSym) == false){
+            strErrorMessage += 'Your email must include an @ symbol!';
+        }
+        else if (strEmail.includes(dotCom) == false && strLEmail.includes(dotNet) == false && strLEmail.includes(dotEdu) == false){
+            strErrorMessage += 'Your email must include .com, .net or .edu!';
+        }
+        else{
+            return false;
+        }
+        alert(strErrorMessage)
+    })
+
+    $('#txtUserFName').val()
+        $('#txtUserLName').val()
+        $('txtIsOwner').val();
+        $('#txtEmail').val();
+        $('#txtPassword').val();
+        $('#txtMobNum').val();
+        var strErrorMessage = '';
+
+        $('#txtFarmId').val();
+        $('#txtFarmName').val();
+        $('#txtAddress').val();
+        $('#txtAddress2').val();
+        $('#txtCity').val();
+        $('#txtState').val();
+        $('#txtZip').val();
+        var secErrorMessage = '';
+
+        $(document).on('click','#btnCreate',function(){
+            let strFirstName = $('#txtUserFName').val();
+            let intFirstNameLength = $('#txtUserFName').val().length;
+            
+            let strLastName = $('#txtUserLName').val();
+            let intLastNameLength = $('#txtUserLName').val().length;
+
+            let strIsOwner = $('#txtIsOwner').val();
+            let intIsOwnerLength = $('#txtIsOwner').val().length;
+
+            let strEmail = $('#txtEmail').val();
+            let intEmailLength = $('#txtEmail').val().length;
+
+            let strPassword = $('#txtPassword').val();
+            let intPasswordLength = $('#txtPassword').val().length;
+
+            let intMobNum = $('#txtMobNum').val();
+            let intMobNumLength = $('#txtMobNum').val().length;
+
+            var strErrorMessage1 = 'Please check your data in User Information!';
+
+            if(intFirstNameLength < 1 || intLastNameLength < 1 || intIsOwnerLength < 1 || intEmailLength < 1 || intPasswordLength < 1 || intMobNumLength < 1){
+                alert(strErrorMessage1);
+            }
+
+            let strFarmId = $('#txtFarmId').val();
+            let intFarmIdLength = $('#txtFarmId').val().length;
+            
+            let strFarmName = $('txtFarmName').val();
+            let intFarmNameLength = $('txtFarmName').val().length;
+
+            let strAddress = $('#txtAddress1').val();
+            let intAddressLength = $('#txtAddress1').val().length;
+
+            let strAddress2 = $('#txtAddress2').val();
+            let intAddress2Length = $('#txtAddress2').val().length;
+
+            let strCity = $('#txtCity').val();
+            let intCityLength = $('#txtCity').val().length;
+            
+            let strState = $('#txtState').val();
+            let intStateLength = $('#txtState').val().length;
+
+            let intZip = $('#txtZip').val();
+            let intZipLength = $('#txtZip').val().length;
+
+            var strErrorMessage2 = 'Please check your data in Location Details!';
+
+            if(intFarmIdLength  < 1 || intFarmNameLength < 1 || intAddressLength < 1 || intAddress2Length < 1 || intCityLength < 1 || intStateLength < 1 || intZipLength < 1){
+                alert(strErrorMessage2);
+            }
+        })
+*/
+
+  const taskList = document.getElementById('task-list');
+  const taskForm = document.getElementById('task-form');
+
+  // Listen for clicks on the "Edit" button for each task
+  taskList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('edit-button')) {
+      const taskText = event.target.previousElementSibling;
+      const inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.value = taskText.textContent;
+      taskText.replaceWith(inputField);
+      event.target.textContent = 'Save';
+      event.target.classList.add('save-button');
+      event.target.classList.remove('edit-button');
+    } else if (event.target.classList.contains('save-button')) {
+      const inputField = event.target.previousElementSibling;
+      const taskText = document.createElement('span');
+      taskText.classList.add('task-text');
+      taskText.textContent = inputField.value;
+      inputField.replaceWith(taskText);
+      event.target.textContent = 'Edit';
+      event.target.classList.add('edit-button');
+      event.target.classList.remove('save-button');
+    }
+  });
+      
+  // Add task to list when form is submitted
+  taskForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const taskInput = document.getElementById('task-input');
+    const newTask = document.createElement('li');
+    newTask.textContent = taskInput.value;
+    taskList.appendChild(newTask);
+    taskInput.value = '';
+  });
+  
+  // Delete task when clicked
+  taskList.addEventListener('click', function(event) {
+    const clickedItem = event.target;
+    clickedItem.parentNode.removeChild(clickedItem);
+  });
+
+  taskList.addEventListener('dblclick', function(event) {
+  const clickedItem = event.target;
+  const originalText = clickedItem.textContent;
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.value = originalText;
+  clickedItem.textContent = '';
+  clickedItem.appendChild(editInput);
+  editInput.focus();
+  editInput.addEventListener('blur', function() {
+    clickedItem.textContent = editInput.value;
+  });
+});
+
+</script>
+</body>
+</html>
