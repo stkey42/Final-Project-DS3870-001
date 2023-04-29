@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <style>
+  
     .form-check-input:checked[type=radio] {
       background-color: green;
       border-color: green;
@@ -25,6 +26,7 @@
         color: #006747;
         margin-bottom: 0.5rem;
     }
+
     input[type="text"], input[type="password"] {
         width: 100%;
         padding: 0.5rem;
@@ -35,6 +37,7 @@
         font-size: 1rem;
         color: #666;
     }
+
     body {
         font-family: Helvetica, Arial, sans-serif;  
         background-image: url('tree.jpg'); 
@@ -45,115 +48,166 @@
         margin: 0;
         padding: 0;
     }
-      h1 {
-          font-size: 36px;
-          text-align: center;
-          margin-top: 50px;
-          margin-bottom: 50px;
-          color: #000000;
-      }
 
-      .card{
-          background-color:  white;
-      }
-      form {
-          background-color:  white;
-          border-radius: 20px;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          width: 500px;
-          max-width: 90%;
-          margin: auto;
-          padding: 50px;
-      }
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: #000000;
+    }
 
-      label {
-          font-size: 18px;
-          color: #36454F;
-          display: block;
-          margin-bottom: 10px;
-      }
+    .card{
+        background-color:  white;
+    }
 
-      input[type="text"],
-      input[type="email"],
-      input[type="password"] {
-          border: none;
-          border-radius: 5px;
-          padding: 10px;
-          font-size: 16px;
-          width: 100%;
-          margin-bottom: 20px;
-          background-color: #F3F3F3;
-          color: #36454F;
-      }
+    form {
+        background-color:  white;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        width: 500px;
+        max-width: 90%;
+        margin: auto;
+        padding: 50px;
+    }
 
-      input[type="submit"] {
-          background-color: #9CB84D;
-          border: none;
-          color: #FFFFFF;
-          font-size: 18px;
-          font-weight: bold;
-          padding: 15px 20px;
-          border-radius: 30px;
-          cursor: pointer;
-          transition: background-color 0.2s ease-in-out;
-          width: 100%;
-          margin-top: 30px;
-      }
+    label {
+        font-size: 18px;
+        color: #36454F;
+        display: block;
+        margin-bottom: 10px;
+    }
 
-      input[type="submit"]:hover {
-          background-color: #7DA33E;
-      }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: #F3F3F3;
+        color: #36454F;
+    }
 
-      .form-group {
-          margin-bottom: 30px;
-      }
+    input[type="submit"] {
+        background-color: #9CB84D;
+        border: none;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        width: 100%;
+        margin-top: 30px;
+    }
 
-      .terms {
-          font-size: 14px;
-          color: #36454F;
-          text-align: center;
-          margin-top: 30px;
-      }
+    input[type="submit"]:hover {
+        background-color: #7DA33E;
+    }
 
-      .terms a {
-          color: #9CB84D;
-      }
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .terms {
+        font-size: 14px;
+        color: #36454F;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .terms a {
+        color: #9CB84D;
+    }
 
       /* Media Queries */
-      @media (max-width: 767px) {
-          form {
-              padding: 30px;
-          }
-          input[type="submit"] {
-              margin-top: 20px;
-          }
-      }
-      #header {
-        height: 60px;
-        padding: 10px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    @media (max-width: 767px) {
+        form {
+            padding: 30px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+        }
+    }
 
+    #header {
+      height: 60px;
+      padding: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 3px 3px #000000;
+    }
+
+    #task-form {
+      border: 1px solid #000000;
+    }
+
+    /* Default styles */
+    #divHarvest {
+      display: flex;
+      justify-content: center;
+    }
+    
+    #divHarvest .card {
+      max-width: 600px;
+    }
+    
+    #Inventory .table {
+      background-color: #FFF8DC;
+      font-size: 12px;
+    }
+  
+  /* Styles for small screens */
+    @media only screen and (max-width: 576px) {
+      #divHarvest .card {
+      max-width: 100%;
+      margin: 0 10px;
+    }
+    
+    #Inventory .table {
+      font-size: 10px;
+    }
+      }
       #header h1 {
-        margin: 0;
-        font-size: 3rem;
-        font-weight: bold;
-        color: #ffffff;
-        text-shadow: 3px 3px #000000;
+      font-size: 2rem;
+    }
+
+    #header img {
+      max-height: 40px;
+      max-width: 40px;
+    }
+
+    @media (max-width: 576px) {
+      #header h1 {
+        font-size: 1.5rem;
       }
-      #task-form {
-        border: 1px solid #000000;
+      
+      #header img {
+        max-height: 30px;
+        max-width: 30px;
       }
+    }
+
 </style>
 
 </head>
 <body>
-  <div class="mt-3 me-2" id="header">
-    <h1>swollenFarms</h1>
-    <img class="ms-2" src="hippo.png" alt="hippo" height="50" width="50">
+  <div class="d-flex justify-content-center align-items-center mt-3 me-2" id="header">
+    <h1 class="mb-0">swollenFarms</h1>
+    <img class="ms-2 me-2" src="hippo.png" alt="hippo" height="40" width="40">
   </div>
   
   <div id="divLogin" class="row vw-100 justify-content-center mt-4">
@@ -346,24 +400,23 @@
   </div>
 </div>
 
-<div style="display: flex; justify-content: center;">
-  <div style="display:none; max-width: 600px; margin: auto;" id="divHarvest" class="row justify-content-center mt-4">
-    <div class="col-12 card mt-2 p-0" aria-label="Current Harvests" style="max-width: 600px;">
-      <h4 style="font-weight: 600;" class="text-center pt-3">Current Harvests</h4>
-      <div id="Inventory">
-        <div class="card-body" style="background-color: white;" aria-label="Harvest Details">
-          <div class="table table-responsive">
-            <table class="table table-bordered table-striped" style="background-color: #FFF8DC; font-size: 12px;" aria-label="Harvest Table">
-              <thead class="bg-success text-light">
-                <tr>
-                  <th scope="col" aria-label="Item Name">Item Name</th>
-                  <th scope="col" aria-label="Quantity">Quantity</th>
-                  <th scope="col" aria-label="Total Weight">Total Weight</th>
-                  <th scope="col" aria-label="Sale Price">Sale Price</th>
-                  <th scope="col" aria-label="Harvested By">Harvested By</th>
-                  <th scope="col" aria-label="Harvest Date">Harvest Date</th>
-                  <th scope="col" aria-label="Farm Location">Farm Location</th>
-                </tr>
+<div class="row justify-content-center mt-4">
+  <div style="display:none;" id="divHarvest" class="col-12 col-lg-6 card mt-2 p-0" aria-label="Current Harvests">
+    <h4 style="font-weight: 600;" class="text-center pt-3">Current Harvests</h4>
+    <div id="Inventory">
+      <div class="card-body" style="background-color: white;" aria-label="Harvest Details">
+        <div class="table table-responsive">
+          <table class="table table-bordered table-striped" aria-label="Harvest Table">
+            <thead class="bg-success text-light">
+              <tr>
+                <th scope="col" aria-label="Item Name">Item Name</th>
+                <th scope="col" aria-label="Quantity">Quantity</th>
+                <th scope="col" aria-label="Total Weight">Total Weight</th>
+                <th scope="col" aria-label="Sale Price">Sale Price</th>
+                <th scope="col" aria-label="Harvested By">Harvested By</th>
+                <th scope="col" aria-label="Harvest Date">Harvest Date</th>
+                <th scope="col" aria-label="Farm Location">Farm Location</th>
+              </tr>
               </thead>
             <tbody>
               <tr>
