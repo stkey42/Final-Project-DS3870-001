@@ -283,7 +283,7 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <button class="text-center btn btn-success btnSwap btn-sm mt-2 col-md-8" type="button">Continue<i class="fas fa-arrow-right ms-2"></i></button>
+        <button class="text-center btn btn-success btnSwap btn-sm mt-2 col-md-8" type="button" id="btnContinue">Continue<i class="fas fa-arrow-right ms-2"></i></button>
       </div>
     </form>
   </div>
@@ -326,7 +326,7 @@
       </div>
   
       <div class="row justify-content-end">
-        <button class="col-md-8 mx-auto btn btn-success btnNew btn-sm mt-2 btn-block" type="button" aria-label="Submit your Farm information">Submit<i class="fas fa-check ms-2"></i></button>
+        <button class="col-md-8 mx-auto btn btn-success btnNew btn-sm mt-2 btn-block" type="button" id="btnSubmit" aria-label="Submit your Farm information">Submit<i class="fas fa-check ms-2"></i></button>
       </div>
     </form>
   </div>
@@ -507,8 +507,8 @@
         <input type="text" class="form-control" id="task" name="task">
       </div>
     <div class="text-center">
-      <button type="button" class="col-8 btn btn-success btn-md mb-3" onclick="addTask()"><i class="fas fa-plus me-2"></i>Record Task</button>
-      <button type="button" class="col-8 btn btn-dark btn-md mb-3" onclick="finishTask()"><i class="fas fa-check me-2"></i>Finish Task</button>
+      <button type="button" class="col-8 btn btn-success btn-md mb-3" onclick="addTask()" id="btnAddTask"><i class="fas fa-plus me-2"></i>Record Task</button>
+      <button type="button" class="col-8 btn btn-dark btn-md mb-3" onclick="finishTask()" id="btnTaskDone"><i class="fas fa-check me-2"></i>Finish Task</button>
       <button class="col-8 btnProcess btn btn-danger btn-md"><i class="fas fa-arrow-left me-2"></i>Back</button>
     </div>
   </form>
@@ -530,7 +530,7 @@
       <input type="text" class="form-control" id="weight" min="0">
     </div>
     <div class="text-center">
-      <button type="submit" class="col-10 btn btn-success btn-md mb-3">Record Harvest</button>
+      <button type="submit" class="col-10 btn btn-success btn-md mb-3" id="btnRecordHarvest">Record Harvest</button>
       <button class="btnWeight col-10 btn btn-danger btn-md" type="button" aria-label="Sign Out">Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
     </div>
   </form>
@@ -570,7 +570,7 @@
         <input type="date" class="form-control" id="date" name="date">
       </div>
       <div class="text-center">
-        <button type="submit" class="col-10 btn btn-success btn-md mb-3">Record Raw Materials</button>
+        <button type="submit" class="col-10 btn btn-success btn-md mb-3" id="btnRecordRawMats">Record Raw Materials</button>
         <button class="btnRaw col-10 btn btn-danger btn-md" type="button" aria-label="Sign Out">Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
       </div>
     </form>
@@ -627,6 +627,153 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
+
+
+$('#btnLogin').on('click',function(){
+            // Verify data exists in the fields on the form and then make a post to
+            // /sessions with email and password
+            let strError = '';
+            let blnError = false;
+
+            //check the value of the email after removing all leading and trailing whitespace
+            //is at least 6 characters long. In prod I would use a regular expression to verify
+            //it is a true email format
+            if($('#txtEmail').val().trim().length() < 6){
+                blnError = true;
+                strError += '<p>You must enter a username/email to login</p>';
+            }
+            //check the length of the password meets a minimum 8 characts; again in Prod a regular
+            //express is the better way to go
+            if($('#txtPassword').val().length() < 8){
+                blnError = true;
+                strError += '<p>You must enter a password to login</p>';
+            }
+
+            //check if error exists, if so show a sweet alert else login
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                //perform a login by posting to /sessions with your email and password
+                $.post(strBaseURL + 'sessions',{email:$('#txtEmail').val().trim(),password:$('#txtPassword').val()},function(results){
+                    // check if we get an error, if so show a sweet alert
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Login Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        // if not an error set sessionstorage to your sessionid 
+                        sessionStorage.setItem('SwollenAgSession',results.SessionID)
+                        strSessionID = results.SessionID;
+                        // clear your text boxes of login
+                        $('#txtEmail').val('');
+                        $('#txtPassword').val('')
+                        //slide login away and show the home 
+                        $('#divLogin').slideToggle(function(){
+                            $('#divEmployeeTask').slideToggle();
+                        })
+                        // retrieve sessions details to verify if user is owner
+                        $.getJSON(strBaseURL + 'sessions',{sessionid:strSessionID},function(objSession){
+                            if(objSession.User.Farm.FarmOwner == "false"){
+                                $('#divAdmin').slideUp();
+                            }
+                        })
+                    }
+                })
+            }
+        })
+
+        $('#btnContinue').on('click',function(){
+            let strError = '';
+            let blnError = false;
+            // validate all info is there for the user similar to how I did in the login
+
+
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                // New users should be created via a post to /users
+                $.post('users',{firstname:$('#fname').val(''),lastname:$('#lname').val(''),email:$('#email').val(''),password:$('#password').val(''),mobile:$('#phone').val('')},function(results){
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Login Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        $('#divRegister').slideToggle(function(){
+                            $('#divFarm').slideToggle();
+                        })
+                        
+                    }
+                })
+            }
+
+        })
+    
+        
+        $('#btnSubmit').on('click',function(){
+            let strError = '';
+            let blnError = false;
+            // validate all info is there for the user similar to how I did in the login
+
+            // ENd validate info
+            if(blnError == true){
+                Swal.fire({
+                    title: "Errors Found",
+                    html: strError,
+                    icon: 'error'
+                })
+            } else {
+                // New farm should be created via a post to /farm
+                $.post('farms',{farmID:$('#farmID').val(''), farmname:$('#farmName').val(''),streetaddress1:$('#str1').val(''),streetaddress2:$('#str2').val(''),city:$('#city').val(''),state:$('#state').val(''),zip:$('#ZIP').val('')},function(results){
+                    if(results.Error){
+                        Swal.fire({
+                            title: "Create Farm Failed",
+                            text: results.Error,
+                            icon: 'error'
+                        })
+                    } else {
+                        sessionStorage.setItem('SwollenAgSession',results.SessionID)
+                        strSessionID = results.SessionID;
+                        $('#divFarm').slideToggle(function(){
+                            $('#divEmployeeTask').slideToggle();
+                        })
+                    }
+                })
+            }
+
+        })
+
+    
+        $('btnLogout').on('click',function(){
+            $.ajax({
+                url: strBaseURL + 'sessions',
+                type: 'DELETE',
+                data: {sessionid:strSessionID},
+                success: function(result) {
+                    sessionStorage.removeItem('SwollenAgSession');
+                    strSessionID = '';
+                    $('#divEmployeeTask').slideToggle(function(){
+                        $('#divLogin').slideToggle();
+                    })
+                }
+            });
+        })
+
+
+
+
+
 
   // other background color if white does not look good: style="background-color: #F5DEB3;" //
 
