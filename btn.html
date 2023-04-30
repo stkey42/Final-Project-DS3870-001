@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  
+<style>
+  
+  .form-check-input:checked[type=radio] {
+    background-color: green;
+    border-color: green;
+  }
+
+  * {
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+  }
+
+  label {
+      display: block;
+      font-weight: bold;
+      color: #006747;
+      margin-bottom: 0.5rem;
+  }
+
+  input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      color: #666;
+  }
+
+  body {
+      font-family: Helvetica, Arial, sans-serif;  
+      background-image: url('tree.jpg'); 
+      background-repeat: no-repeat; 
+      background-attachment: fixed; 
+      background-size: cover;
+      background-color: #F3F3F3;
+      margin: 0;
+      padding: 0;
+  }
+
+  h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      color: #000000;
+  }
+
+  .card{
+      background-color:  white;
+  }
+
+  form {
+      background-color:  white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      width: 500px;
+      max-width: 90%;
+      margin: auto;
+      padding: 50px;
+  }
+
+  label {
+      font-size: 18px;
+      color: #36454F;
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: #F3F3F3;
+      color: #36454F;
+  }
+
+  input[type="submit"] {
+      background-color: #9CB84D;
+      border: none;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      width: 100%;
+      margin-top: 30px;
+  }
+
+  input[type="submit"]:hover {
+      background-color: #7DA33E;
+  }
+
+  .form-group {
+      margin-bottom: 30px;
+  }
+
+  .terms {
+      font-size: 14px;
+      color: #36454F;
+      text-align: center;
+      margin-top: 30px;
+  }
+
+  .terms a {
+      color: #9CB84D;
+  }
+
+    /* Media Queries */
+  @media (max-width: 767px) {
+      form {
+          padding: 30px;
+      }
+      input[type="submit"] {
+          margin-top: 20px;
+      }
+  }
+
+  #header {
+    height: 60px;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 3px 3px #000000;
+  }
+
+  #task-form {
+    border: 1px solid #000000;
+  }
+
+  /* Default styles */
+  #divHarvest {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #divHarvest .card {
+    max-width: 600px;
+  }
+  
+  #Inventory .table {
+    background-color: #FFF8DC;
+    font-size: 12px;
+  }
+
+/* Styles for small screens */
+  @media only screen and (max-width: 576px) {
+    #divHarvest .card {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+  
+  #Inventory .table {
+    font-size: 10px;
+  }
+    }
+    #header h1 {
+    font-size: 2rem;
+  }
+
+  #header img {
+    max-height: 40px;
+    max-width: 40px;
+  }
+
+  @media (max-width: 576px) {
+    #header h1 {
+      font-size: 1.5rem;
+    }
+    
+    #header img {
+      max-height: 30px;
+      max-width: 30px;
+    }
+  }
+
+</style>
+
+</head>
+<body>
+
+  <div class="d-flex justify-content-center align-items-center mt-3 col-2 mx-auto" id="header">
+    <h1 class="mb-0">swollenFarms</h1>
+    <img class="ms-2 shadow-lg" src="hippo.png" alt="hippo" height="40" width="40">
+  </div>
+  
+  <div id="divLogin" class="row vw-100 justify-content-center mt-4">
+    <div class="col-12 col-md-8 col-lg-6 mt-2">
+      <form style="color: black;">
+        <h4 class="text-center" style="font-weight: 600;">Sign in</h4>
+        <div class="form-group">
+          <label style="font-weight: 600" for="txtEmail" class="form-label mt-4">Username or Email</label>
+          <input class="form-control" id="txtEmail" placeholder="ex. jondavid@tntech.edu" type="email" aria-label="Email Address" aria-describedby="Input Number One">
+        </div>
+        <div class="form-group">
+          <label style="font-weight: 600" for="txtPassword" class="form-label" aria-label="Password" aria-describedby="Input Number Two">Password</label>
+          <input class="form-control" id="txtPassword" placeholder="ex. codingIsKewl123" type="password" aria-label="Password">
+        </div>
+        <div class="row justify-content-center">
+          <button style="color: white; border-radius: 0.25rem;" class="btnTrade btn btn-success btn-sm mt-3 col-12 col-sm-8" id="btnLogin" type="button" aria-label="Login">
+            <i class="fas fa-sign-in-alt mr-2 me-2"></i>Login
+          </button>
+        </div>
+        <div class="row justify-content-center mt-3">
+          <button style="color: white; border-radius: 0.25rem;" class="btnLogout btn btn-danger btn-sm col-12 col-sm-8" id="btnOwner" type="button" aria-label="Owner Login">
+            <i class="fas fa-user-tie mr-2 me-2"></i>Owner Login
+          </button>
+        </div>
+        <div class="row justify-content-center mt-3">
+          <button style="color: black; border-radius: 0.25rem;" type="button" class="btnHit btn btn-sm-success py-2 col-12 col-sm-10" id="btnNew" aria-label="Sign up">
+            Not A Member? Sign Up Here<i class="fas fa-user-plus mr-2 ms-2"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divEmployeeTask">
+    <div class="card">
+      <div class="card-body container">
+        <h2 style="font-family: 'Open Sans', sans-serif; font-size: 2.0rem; font-weight: bold; margin-bottom: 1.5rem;" class="text-center mb-4" aria-label="Employee Task Page">Employee Dashboard</h2>
+        </form>
+        <div class="text-center">
+          <div class="d-grid gap-2">
+            <button class="btnProcess btn btn-success btn-md mb-3" aria-label="Farm Dashboard">
+              <i class="far fa-clipboard me-2"></i>In Process Tasks</button>
+            <button class="btnDash btn btn-success btn-md mb-3" aria-label="Farm Dashboard">
+              <i class="fas fa-weight-hanging me-2"></i>Record Weights of Products</button>
+            <button class="btnRaw btn btn-success btn-md mb-3" aria-label="Employee Dashboard">
+              <i class="fas fa-box-open me-2"></i>Raw Materials Usage</button>
+            <button class="btnProducts btn btn-success btn-md mb-3" aria-label="Employee Dashboard">
+              <i class="fas fa-pencil-alt me-2"></i>Edit Farm Products</button>
+            <button class="btnTrade btn btn-danger btn-md" aria-label="Sign Out">
+              Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divWeight">
+    <form id="weightForm">
+      
+      <div class="mb-3">
+        <h3 class="text-center mb-3 fw-bold text-success">Record Products</h3>
+        <label for="product-name" class="form-label">Product</label>
+        <input type="text" class="form-control" id="product-name">
+      </div>
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" class="form-control" id="amount">
+      </div>
+      <div class="mb-3">
+        <label for="weight" class="form-label">Weight (in lbs)</label>
+        <input type="text" class="form-control" id="weight" min="0">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="col-8 btn btn-success btn-md mb-3" id="btnRecordHarvest">Record Harvest<i class="fas fa-plus ms-2"></i></button>
+        <button class="btnWeight col-8 btn btn-danger btn-md" type="button" aria-label="Sign Out"><i class="fas fa-arrow-left me-2"></i>Back</button>
+      </div>
+    </form>
+  </div>
+
+  
+  <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divRaw">
+    <form id="rawMatsForm">
+      <h3 class="text-center mb-3 fw-bold text-success">Raw Materials Form</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Weight</th>
+            <th>User</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+
+      <div class="form-group mt-4">
+        <label for="material">Material:</label>
+        <input type="text" class="form-control" id="material" name="material">
+      </div>
+      <div class="form-group">
+        <label for="pounds">Weight:</label>
+        <input type="number" class="form-control" id="pounds" name="pounds">
+      </div>
+      <div class="form-group">
+        <label for="user">User:</label>
+        <input type="text" class="form-control" id="user" name="user">
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date" name="date">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="col-8 btn btn-success btn-md mb-3" id="btnRecordRawMats">Add Raw Materials<i class="fas fa-plus ms-2"></i></button>
+        <button class="btnRaw col-8 btn btn-danger btn-md" type="button" aria-label="Sign Out"><i class="fas fa-arrow-left me-2"></i>Back</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+// divRaw function //
+$(document).ready(function() {
+  $('#rawMatsForm').submit(function(event) {
+    event.preventDefault();
+
+    // Get input values
+    var material = $('#material').val();
+    var pounds = parseFloat($('#pounds').val());
+    var user = $('#user').val();
+    var date = new Date().toLocaleDateString();
+
+    // Append data to table
+    $('#divRaw table tbody').append('<tr><td>' + material + '</td><td>' + pounds + ' lbs</td><td>' + user + '</td><td>' + date + '</td></tr>');
+
+    // Clear input values
+    $('#material').val('');
+    parseFloat($('#pounds').val(''));
+    $('#user').val('');
+    $('#date').val('');
+  });
+});
+
+$(document).ready(function() {
+  $('#weightForm').submit(function(event) {
+    event.preventDefault();
+  
+    // Get input values
+    var productName = $('#product-name').val();
+    var amount = $('#amount').val();
+    var weight = $('#weight').val();
+  
+    // Append data to table
+    var newRow = '<tr><td>' + productName + '</td><td>' + amount + '</td><td>' + weight + ' lbs</td></tr>';
+    $('#divWeight table tbody').append(newRow);
+  
+    // Clear input values
+    $('#product-name').val('');
+    $('#amount').val('');
+    $('#weight').val('');
+  });
+});
+
+
+$('.btnProducts').on('click',function(){
+        $('#divProducts').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+
+    $('.btnRaw').on('click',function(){
+        $('#divRaw').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+    
+    $('.btnDash').on('click',function(){
+        $('#divWeight').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+
+    $('.btnProcess').on('click',function(){
+        $('#divProcess').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+
+    $('.btnExchange').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divProcess').slideToggle();
+    })
+
+    $('.btnTrade').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divEmployeeTask').slideToggle();
+    })
+
+    $('.btnHit').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divRegister').slideToggle();
+    })
+
+    $('.btnNew').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#divFarm').slideToggle();
+    })    
+
+    $('.btnSwap').on('click',function(){
+        $('#divRegister').slideToggle();
+        $('#divFarm').slideToggle();
+    })
+
+    $('.btnLogout').on('click',function(){
+        $('#divLogin').slideToggle();
+        $('#ownerDashboard').slideToggle();
+    })
+
+    $('.btnHarvest').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divHarvest').slideToggle();
+    })
+
+    $('.btnEmployee').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divEmployee').slideToggle();
+    })
+    
+    $('.btnBack').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divHarvest').slideToggle();
+    })
+
+    $('.btnOwner').on('click',function(){
+        $('#ownerDashboard').slideToggle();
+        $('#divEmployee').slideToggle();
+    })
+  </script>
+</body>
+</html>

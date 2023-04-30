@@ -458,7 +458,7 @@
             </tbody>
           </table>
       </div>
-      <button class="btnBack btn btn-md btn-danger" type="button" aria-label="Back To Dashboard">Back To Dashboard</button>
+      <button class="btnBack btn btn-sm btn-danger" type="button" aria-label="Back To Dashboard"><i class="fas fa-arrow-left me-2"></i>Back</button>
     </div>
   </div>
 </div>
@@ -473,7 +473,7 @@
           <button class="btnProcess btn btn-success btn-md mb-3" aria-label="Farm Dashboard">
             <i class="far fa-clipboard me-2"></i>In Process Tasks</button>
           <button class="btnWeight btn btn-success btn-md mb-3" aria-label="Farm Dashboard">
-            <i class="fas fa-weight-hanging me-2"></i>Record Weights of Products</button>
+            <i class="fas fa-weight-hanging me-2"></i>Record Products</button>
           <button class="btnRaw btn btn-success btn-md mb-3" aria-label="Employee Dashboard">
             <i class="fas fa-box-open me-2"></i>Raw Materials Usage</button>
           <button class="btnProducts btn btn-success btn-md mb-3" aria-label="Employee Dashboard">
@@ -488,9 +488,9 @@
 
 <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divProcess">
   <form>
-    <h5>In Process Tasks</h5>
+    <h3 class="text-center mb-3 fw-bold text-success">In Process Tasks</h3>
     <form>
-      <table class="table mt-4">
+      <table class="table table-striped mt-4">
         <thead>
           <tr>
             <th>Task</th>
@@ -507,17 +507,30 @@
         <input type="text" class="form-control" id="task" name="task">
       </div>
     <div class="text-center">
-      <button type="button" class="col-8 btn btn-success btn-md mb-3" onclick="addTask()"><i class="fas fa-plus me-2"></i>Record Task</button>
-      <button type="button" class="col-8 btn btn-dark btn-md mb-3" onclick="finishTask()"><i class="fas fa-check me-2"></i>Finish Task</button>
-      <button class="col-8 btnProcess btn btn-danger btn-md"><i class="fas fa-arrow-left me-2"></i>Back</button>
+      <button type="button" class="col-8 btn btn-success btn-sm mb-3" onclick="addTask()">Record Task<i class="fas fa-plus ms-2"></i></button>
+      <button type="button" class="col-8 btn btn-dark btn-sm mb-3" onclick="finishTask()">Finish Task<i class="fas fa-check ms-2"></i></button>
+      <button type="button" class="col-8 btnProcess btn btn-danger btn-sm"><i class="fas fa-arrow-left me-2"></i>Back</button>
     </div>
   </form>
 </div>
 
 <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divWeight">
-  <form>
+  <form id="formWeight">
+    <h3 class="text-center fw-bold text-success">Record Products</h3>
+    <div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+</div>
     <div class="mb-3">
-      <h4>Record Products</h4>
       <label for="product-name" class="form-label">Product</label>
       <input type="text" class="form-control" id="product-name">
     </div>
@@ -526,21 +539,21 @@
       <input type="number" class="form-control" id="amount">
     </div>
     <div class="mb-3">
-      <label for="weight" class="form-label">Weight (in lbs)</label>
+      <label for="weight" class="form-label">Weight</label>
       <input type="text" class="form-control" id="weight" min="0">
     </div>
     <div class="text-center">
-      <button type="submit" class="col-10 btn btn-success btn-md mb-3">Record Harvest</button>
-      <button class="btnWeight col-10 btn btn-danger btn-md" type="button" aria-label="Sign Out">Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
+      <button type="submit" class="col-8 btn btn-success btn-sm mb-3">Record Harvest<i class="fas fa-plus ms-2"></i></button>
+      <button class="col-8 btnWeight btn btn-danger btn-sm" type="button" aria-label="Back"><i class="fas fa-arrow-left me-2"></i>Back</button>
     </div>
   </form>
 </div>
 
 <div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divRaw">
-    <form>
-      <h5>Raw Materials Form</h5>
+    <form id="formRaw">
+      <h3 class="text-center mb-3 fw-bold text-success">Raw Materials Form</h3>
 
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Material</th>
@@ -558,29 +571,25 @@
         <input type="text" class="form-control" id="material" name="material">
       </div>
       <div class="form-group">
-        <label for="weight">Weight:</label>
-        <input type="number" class="form-control" id="weight" name="weight">
+        <label for="pounds">Weight:</label>
+        <input type="number" class="form-control" id="pounds" name="pounds">
       </div>
       <div class="form-group">
         <label for="user">User:</label>
         <input type="text" class="form-control" id="user" name="user">
       </div>
-      <div class="form-group">
-        <label for="date">Date:</label>
-        <input type="date" class="form-control" id="date" name="date">
-      </div>
       <div class="text-center">
-        <button type="submit" class="col-10 btn btn-success btn-md mb-3">Record Raw Materials</button>
-        <button class="btnRaw col-10 btn btn-danger btn-md" type="button" aria-label="Sign Out">Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
+        <button type="submit" class="col-8 btn btn-success btn-sm mb-3">Add Raw Materials<i class="fas fa-plus ms-2"></i></button>
+        <button class="btnRaw col-8 btn btn-danger btn-sm" type="button" aria-label="Back"><i class="fas fa-arrow-left me-2"></i>Back</button>
       </div>
     </form>
   </div>
 </div>
 
-<div class="container justify-content-center mt-4" style="max-width:600px; display:none" id="divProducts">
-  <form>
-  <h1>Edit Farm Products</h1>
-  <table id="tableProducts">
+<div class="container justify-content-center" style="max-width: 600px; display: none;" id="divProducts">
+  <form id="product-form">
+    <h3 class="text-center mb-3 fw-bold text-success">Edit Farm Products</h3>
+  <table class="table table-striped" id="tabProducts">
     <thead>
       <tr>
         <th>Product Name</th>
@@ -589,34 +598,29 @@
         <th>Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tableBody">
     </tbody>
   </table>
-  <form>
-    <fieldset>
-      <legend>Product List</legend>
-
+    <fieldset class="mt-4 mb-3">
       <div>
-        <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="product-name">
+        <label for="product" class="form-label">Product:</label>
+        <input type="text" class="form-control" id="product" name="product">
       </div>
 
       <div>
-        <label for="product-description">Product Description:</label>
-        <textarea id="product-description" name="product-description"></textarea>
+        <label for="product-description" class="form-label">Product Description:</label>
+        <textarea class="form-control" id="product-description" name="product-description"></textarea>
       </div>
 
-      <div>
-        <label for="product-price">Product Price:</label>
-        <input type="number" id="product-price" name="product-price" step="0.01" min="0">
+      <div class="mt-4 mb-3">
+        <label for="product-price" class="form-label">Product Price:</label>
+        <input type="number" class="form-control" id="product-price" name="product-price" step="0.01" min="0">
       </div>
-
       <div class="text-center">
-        <button class="col-10 btn btn-success btn-md mb-3" type="submit">Add Product</button>
-        <button class="btnProducts col-10 btn btn-danger btn-md" type="button" aria-label="Sign Out">Sign Out<i class="fas fa-sign-out-alt ms-2"></i></button>
+        <button class="col-8 btn btn-success btn-sm mt-3 mb-3" type="submit">Add Product<i class="fas fa-plus ms-2"></i></button>
+        <button class="col-8 btnProducts btn btn-danger btn-sm mb-3" type="button" aria-label="Back"><i class="fas fa-arrow-left me-2"></i>Back</button>
       </div>
     </fieldset>
-
   </form>
 </div>
 
@@ -630,47 +634,114 @@
 
   // other background color if white does not look good: style="background-color: #F5DEB3;" //
 
-  // editing products //
-  $(document).ready(function() {
-  $('form').submit(function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-    
-    var productName = $('#product-name').val();
-    var productDescription = $('#product-description').val();
-    var productPrice = $('#product-price').val();
+  // for divProducts //
+    // Define a variable to keep track of the selected row
+ let selectedRow = null;
 
-    // Append the new row to the table
-    $('#tableProducts').append('<tr><td>' + productName + '</td><td>' + productDescription + '</td><td>' + productPrice + '</td><td><button type="button">Edit</button><button type="button">Delete</button></td></tr>');
-    
-    // Clear the form inputs
+function addProduct() {
+  const name = document.getElementById("product").value;
+  const description = document.getElementById("product-description").value;
+  const price = parseFloat(document.getElementById("product-price").value).toFixed(2);
+
+  if (selectedRow === null) {
+    // Add a new row if no row is currently selected
+    const table = document.getElementById("tabProducts").getElementsByTagName("tbody")[0];
+    const newRow = table.insertRow();
+    const nameCell = newRow.insertCell(0);
+    const descriptionCell = newRow.insertCell(1);
+    const priceCell = newRow.insertCell(2);
+    const actionCell = newRow.insertCell(3);
+    nameCell.innerHTML = name;
+    descriptionCell.innerHTML = description;
+    priceCell.innerHTML = `$${price}`;
+    actionCell.innerHTML = `<i onclick="editProduct(this)" class="fas fa-edit ms-2"></i> <i onclick="deleteProduct(this)" class="text-danger fas fa-trash"></i>`;
+  } else {
+    // Update the selected row if one is currently selected
+    selectedRow.cells[0].innerHTML = name;
+    selectedRow.cells[1].innerHTML = description;
+    selectedRow.cells[2].innerHTML = `$${price}`;
+  }
+
+  // Clear the form fields and reset the selected row
+  document.getElementById("product-form").reset();
+  selectedRow = null;
+}
+
+function editProduct(row) {
+  // Get the row index of the clicked edit button
+  const rowIndex = row.parentNode.parentNode.rowIndex;
+
+  // Set the selected row and populate the form fields with its data
+  selectedRow = document.getElementById("tabProducts").rows[rowIndex];
+  document.getElementById("product").value = selectedRow.cells[0].innerHTML;
+  document.getElementById("product-description").value = selectedRow.cells[1].innerHTML;
+  document.getElementById("product-price").value = parseFloat(selectedRow.cells[2].innerHTML.replace("$", ""));
+}
+
+document.getElementById("product-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  addProduct();
+});
+
+function deleteProduct(row) {
+  // Get row data
+  var rowData = row.closest('tr');
+  var name = rowData.cells[0].textContent;
+  var description = rowData.cells[1].textContent;
+  var price = rowData.cells[2].textContent;
+
+  // Set form values to row data
+  document.getElementById('product').value = name;
+  document.getElementById('product-description').value = description;
+  document.getElementById('product-price').value = price;
+
+  // Remove old row
+  rowData.remove();
+}
+// for divProducts
+
+// divWeight function //
+$('#formWeight').on('submit', function(event) {
+  event.preventDefault();
+  
+    // Get input values
+    var productName = $('#product-name').val();
+    var amount = $('#amount').val();
+    var weight = $('#weight').val();
+  
+    // Append data to table
+    var newRow = '<tr><td>' + productName + '</td><td>' + amount + '</td><td>' + weight + ' lbs</td></tr>';
+    $('#divWeight table tbody').append(newRow);
+  
+    // Clear input values
     $('#product-name').val('');
-    $('#product-description').val('');
-    $('#product-price').val('');
+    $('#amount').val('');
+    $('#weight').val('');
   });
+// divWeight function //
+
+// divRaw function //
+$('#formRaw').on('submit', function(event) {
+  event.preventDefault();
+
+  // Get input values
+  var material = $('#material').val();
+  var pounds = parseFloat($('#pounds').val());
+  var user = $('#user').val();
+  var date = new Date().toLocaleDateString();
+
+  // Append data to table
+  $('#divRaw table tbody').append('<tr><td>' + material + '</td><td>' + pounds + ' lbs</td><td>' + user + '</td><td>' + date + '</td></tr>');
+
+  // Clear input values
+  $('#material').val('');
+  parseFloat($('#pounds').val(''));
+  $('#user').val('');
+  $('#date').val('');
 });
 
 
-// weight function //
-  $(document).ready(function() {
-    $('form').submit(function(event) {
-      event.preventDefault();
-      
-      // Get input values
-      var material = $('#material').val();
-      var user = $('#user').val();
-      var date = $('#date').val();
-      var weight = $('#weight').val();
-      
-      // Append data to table
-      $('#tableBody').append('<tr><td>' + material + '</td><td>' + weight + '</td><td>' + user + '</td><td>' + date + '</td></tr>');
-      
-      // Clear input values
-      $('#material').val('');
-      $('#weight').val('');
-      $('#user').val('');
-      $('#date').val('');
-    });
-  });
+// divRaw function //
 
  // add task for editing in process tasks //
   function addTask() {
@@ -721,11 +792,6 @@
     $('.btnProcess').on('click',function(){
         $('#divProcess').slideToggle();
         $('#divEmployeeTask').slideToggle();
-    })
-
-    $('.btnExchange').on('click',function(){
-        $('#divLogin').slideToggle();
-        $('#divProcess').slideToggle();
     })
 
     $('.btnTrade').on('click',function(){
