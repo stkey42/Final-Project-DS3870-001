@@ -90,14 +90,17 @@ app.listen(HTTP_PORT, () => {
 app.post("/users", (req,res,next) => {
     let strFirstName = req.query.firstname || req.body.firstname;
     let strLastName = req.query.lastname || req.body.lastname;
-    let strPreferredName = req.query.preferredname || req.body.preferredname;
     let strEmail = req.query.email || req.body.email;
     let strPassword = req.query.password || req.body.password;
+    let strMobileNumber = req.query.mobile || req.body.mobile;
+    console.log(strMobileNumber);
     // call the hash method of bcrypt against the password to encrypt and store with a salt
     // notice the use of .then as a promise due to it being async
     bcrypt.hash(strPassword, 10).then(hash => {
         strPassword = hash;
-        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, strPassword], function(error, results){
+        console.log(strPassword);
+        pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?)',[ strFirstName, strLastName,strEmail, strMobileNumber, strPassword], function(error, results){
+            console.log(results)
             if(!error){
                 let objMessage = new Message("Success","New User Created");
                 res.status(201).send(objMessage);
@@ -162,8 +165,6 @@ app.put("/userpassword", (req,res,next) => {
     })
 })
 
-//note there is not a user delete function.  In the EU we would have to provide one, but 
-//here GDPR does not matter as much
 
 //assigns a user to a farm when the logged in user associated with the sessionid passed
 //is the owner of the farm
@@ -231,48 +232,24 @@ app.delete("/farmassignment",(req,res,next)=> {
 //please note we generate a new session at the same time to make sure the user does not have to
 //enter username and password twice
 app.post("/farms", (req,res,next) => {
+    let strFarmID = uuidv4();
+    let strFarmName = req.query.farmname || req.body.farmname;
     let strStreetAddress1 = req.query.streetaddress1 || req.body.streetaddress1;
     let strStreetAddress2 = req.query.streetaddress2 || req.body.streetaddress2;
     let strCity = req.query.city || req.body.city;
     let strState = req.query.state || req.body.state;
     let strZIP = req.query.zip || req.body.zip;
-    let strFarmID = uuidv4();
-    let strFarmName = req.query.farmname || req.body.farmname;
-    let strFirstName = req.query.firstname || req.body.firstname;
-    let strLastName = req.query.lastname || req.body.lastname;
-    let strPreferredName = req.query.preferredname || req.body.preferredname;
-    let strEmail = req.query.email || req.body.email;
-    let strPassword = req.query.password || req.body.password;
     let strSession = uuidv4();
-    let strAssignmentID = uuidv4();
-
-    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?,?,?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity,strState,strZIP], function(error, results){
+    pool.query('INSERT INTO tblFarms VALUES(?, ?, ?, ?, ?, ?, ?, ?)',[strFarmID, strFarmName, strStreetAddress1, strStreetAddress2, strCity, strState, strZIP], function(error, results){
         if(!error){
-            bcrypt.hash(strPassword, 10).then(hash => {
-                strPassword = hash;
-                pool.query('INSERT INTO tblUsers VALUES(?, ?, ?, ?, ?,SYSDATE())',[strEmail, strFirstName, strLastName, strPreferredName, strPassword], function(error, results){
-                    if(!error){
-                        pool.query('INSERT INTO tblFarmAssignment VALUES(?, ?, true, ?)',[strAssignmentID, strFarmID, strEmail], function(error, results){
-                            if(!error){
-                                pool.query('INSERT INTO tblSesisons VALUES(?,SYSDATE(),?)',[strSession, strEmail], function(error, results){
-                                    if(!error){
-                                        let objMessage = new Message("SessionID",strSession);
-                                        res.status(201).send(objMessage);
-                                    } else {
-                                        let objMessage = new Message("Error",error);
-                                        res.status(400).send(objMessage);
-                                    }
-                                })
-                            } else {
-                                let objMessage = new Message("Error",error);
-                                res.status(400).send(objMessage);
-                            }
-                        })
-                    } else {
-                        let objMessage = new Message("Error",error);
-                        res.status(400).send(objMessage);
-                    }
-                })
+            pool.query('INSERT INTO tblSesisons VALUES(?,SYSDATE(),?)',[strSession, strEmail], function(error, results){
+                if(!error){
+                    let objMessage = new Message("SessionID",strSession);
+                    res.status(201).send(objMessage);
+                } else {
+                    let objMessage = new Message("Error",error);
+                    res.status(400).send(objMessage);
+                }
             })
         } else {
             let objMessage = new Message("Error",error);

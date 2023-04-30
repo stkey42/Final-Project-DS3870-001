@@ -628,6 +628,9 @@
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
 
+const strBaseURL = 'http://localhost:8000/';
+var strSessionID;
+
 
 $('#btnLogin').on('click',function(){
             // Verify data exists in the fields on the form and then make a post to
@@ -671,8 +674,8 @@ $('#btnLogin').on('click',function(){
                         sessionStorage.setItem('SwollenAgSession',results.SessionID)
                         strSessionID = results.SessionID;
                         // clear your text boxes of login
-                        $('#txtEmail').val('');
-                        $('#txtPassword').val('')
+                        $('#txtEmail').val();
+                        $('#txtPassword').val()
                         //slide login away and show the home 
                         $('#divLogin').slideToggle(function(){
                             $('#divEmployeeTask').slideToggle();
@@ -702,7 +705,7 @@ $('#btnLogin').on('click',function(){
                 })
             } else {
                 // New users should be created via a post to /users
-                $.post('users',{firstname:$('#fname').val(''),lastname:$('#lname').val(''),email:$('#email').val(''),password:$('#password').val(''),mobile:$('#phone').val('')},function(results){
+                $.post(strBaseURL + 'users',{firstname:$('#fname').val(),lastname:$('#lname').val(),email:$('#email').val(),password:$('#password').val(),mobile:$('#phone').val()},function(results){
                     if(results.Error){
                         Swal.fire({
                             title: "Login Failed",
@@ -717,7 +720,6 @@ $('#btnLogin').on('click',function(){
                     }
                 })
             }
-
         })
     
         
@@ -735,7 +737,7 @@ $('#btnLogin').on('click',function(){
                 })
             } else {
                 // New farm should be created via a post to /farm
-                $.post('farms',{farmID:$('#farmID').val(''), farmname:$('#farmName').val(''),streetaddress1:$('#str1').val(''),streetaddress2:$('#str2').val(''),city:$('#city').val(''),state:$('#state').val(''),zip:$('#ZIP').val('')},function(results){
+                $.post(strBaseURL + 'farms',{farmID:$('#farmID').val(), farmname:$('#farmName').val(),streetaddress1:$('#str1').val(),streetaddress2:$('#str2').val(),city:$('#city').val(),state:$('#state').val(),zip:$('#ZIP').val()},function(results){
                     if(results.Error){
                         Swal.fire({
                             title: "Create Farm Failed",
@@ -778,7 +780,7 @@ $('#btnLogin').on('click',function(){
   // other background color if white does not look good: style="background-color: #F5DEB3;" //
 
   // editing products //
-  $(document).ready(function() {
+/*  $(document).ready(function() {
   $('form').submit(function(event) {
     event.preventDefault(); // Prevent the form from submitting normally
     
@@ -795,8 +797,9 @@ $('#btnLogin').on('click',function(){
     $('#product-price').val('');
   });
 });
+*/
 
-
+/*
 // weight function //
   $(document).ready(function() {
     $('form').submit(function(event) {
@@ -818,7 +821,9 @@ $('#btnLogin').on('click',function(){
       $('#date').val('');
     });
   });
+*/
 
+/*
  // add task for editing in process tasks //
   function addTask() {
     // Get input values
@@ -849,6 +854,7 @@ $('#btnLogin').on('click',function(){
     }
   }
 }
+*/
 
     $('.btnProducts').on('click',function(){
         $('#divProducts').slideToggle();
@@ -919,7 +925,7 @@ $('#btnLogin').on('click',function(){
         $('#ownerDashboard').slideToggle();
         $('#divEmployee').slideToggle();
     })
-    
+  
 
 /*
     $('#txtEmail').val();
@@ -1033,7 +1039,7 @@ $('#btnLogin').on('click',function(){
         })
 */
 
-  const taskList = document.getElementById('task-list');
+/*  const taskList = document.getElementById('task-list');
   const taskForm = document.getElementById('task-form');
 
   // Listen for clicks on the "Edit" button for each task
@@ -1088,6 +1094,7 @@ $('#btnLogin').on('click',function(){
     clickedItem.textContent = editInput.value;
   });
 });
+*/
 
 </script>
 </body>
