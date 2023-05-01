@@ -286,7 +286,7 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <button class="btnSwap text-center btn btn-success btn-sm mt-2 col-md-8">Continue<i class="fas fa-arrow-right ms-2"></i></button>
+        <button class="btnSwap text-center btn btn-success btn-sm mt-2 col-md-8" id="btnContinue">Continue<i class="fas fa-arrow-right ms-2"></i></button>
       </div>
     </form>
   </div>
@@ -329,7 +329,7 @@
       </div>
   
       <div class="row justify-content-end">
-        <button class="col-md-8 mx-auto btn btn-success btnNew btn-sm mt-3 btn-block" type="button" aria-label="Submit your Farm information">Submit<i class="fas fa-check ms-2"></i></button>
+        <button class="col-md-8 mx-auto btn btn-success btnNew btn-sm mt-3 btn-block" type="button" id="btnSubmit" aria-label="Submit your Farm information">Submit<i class="fas fa-check ms-2"></i></button>
       </div>
     </form>
   </div>
@@ -779,7 +779,6 @@ $('#btnLogin').on('click',function(){
 
   // other background color if white does not look good: style="background-color: #F5DEB3;" //
 
-<<<<<<< Updated upstream
   // editing products //
 /*  $(document).ready(function() {
   $('form').submit(function(event) {
@@ -788,11 +787,6 @@ $('#btnLogin').on('click',function(){
     var productName = $('#product-name').val();
     var productDescription = $('#product-description').val();
     var productPrice = $('#product-price').val();
-=======
-  // for divProducts //
- // Define a variable to keep track of the selected row
-let selectedRow = null;
->>>>>>> Stashed changes
 
 function addProduct() {
   const name = document.getElementById("product").value;
@@ -840,9 +834,6 @@ document.getElementById("product-form").addEventListener("submit", function(even
 });
 */
 
-<<<<<<< Updated upstream
-/*
-=======
 // Delete product function
 function deleteProduct(row) {
   // Get row data
@@ -873,7 +864,6 @@ document.addEventListener('click', function(event) {
   // for divProducts //
 
 
->>>>>>> Stashed changes
 // weight function //
 $(document).ready(function() {
   $('form').submit(function(event) {
