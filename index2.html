@@ -500,6 +500,21 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>Harvest Tomatoes</td>
+            <td>1:44:20 PM</td>
+            <td>2:02:54 PM</td>
+          </tr>
+          <tr>
+            <td>Fix Tractor</td>
+            <td>3:25:50 PM</td>
+            <td>5:15:40 PM</td>
+          </tr>
+          <tr>
+            <td>Harvest Potatoes</td>
+            <td>6:50:20 PM</td>
+            <td>7:30:54 PM</td>
+          </tr>
         </tbody>
       </table>
 
@@ -528,6 +543,21 @@
       </tr>
     </thead>
     <tbody id="tableBody">
+      <tr>
+        <td>Tomatoes</td>
+        <td>12</td>
+        <td>25.3 lbs</td>
+      </tr>
+      <tr>
+        <td>Potatoes</td>
+        <td>300</td>
+        <td>900 lbsd</td>
+      </tr>
+      <tr>
+        <td>Strawberries</td>
+        <td>50</td>
+        <td>43 lbs</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -564,6 +594,25 @@
           </tr>
         </thead>
         <tbody id="tableBody">
+          <tr>
+            <td>Wood</td>
+            <td>25.3 lbs</td>
+            <td>John Smith</td>
+            <td>5/2/2023</td>
+          </tr>
+          <tr>
+            <td>Fertilizer</td>
+            <td>50.0 lbs</td>
+            <td>John Smith</td>
+            <td>5/2/2023</td>
+          </tr>
+          <tr>
+            <td>Water</td>
+            <td>200.0 lbs</td>
+            <td>Copper Joe</td>
+            <td>5/2/2023</td>
+          </tr>
+          
         </tbody>
       </table>
 
@@ -600,6 +649,24 @@
       </tr>
     </thead>
     <tbody id="tableBody">
+      <tr>
+        <td>Tomatoes</td>
+        <td>juicy and slightly acidic flavor</td>
+        <td>$2.56</td>
+        <td><i onclick="editProduct(this)" class="fas fa-edit ms-2"></i> <i onclick="deleteProduct(this)" class="text-danger fas fa-trash"></i>`</td>
+      </tr>
+      <tr>
+        <td>Potatoes</td>
+        <td>starchy, tuberous vegetable</td>
+        <td>$3.78</td>
+        <td><i onclick="editProduct(this)" class="fas fa-edit ms-2"></i> <i onclick="deleteProduct(this)" class="text-danger fas fa-trash"></i>`</td>
+      </tr>
+      <tr>
+        <td>Strawberries</td>
+        <td>small, juicy fruit</td>
+        <td>$5.50</td>
+        <td><i onclick="editProduct(this)" class="fas fa-edit ms-2"></i> <i onclick="deleteProduct(this)" class="text-danger fas fa-trash"></i>`</td>
+      </tr>
     </tbody>
   </table>
     <fieldset class="mt-4 mb-3">
@@ -826,7 +893,7 @@ function editProduct(row) {
   selectedRow = document.getElementById("tabProducts").rows[rowIndex];
   document.getElementById("product").value = selectedRow.cells[0].innerHTML;
   document.getElementById("product-description").value = selectedRow.cells[1].innerHTML;
-  document.getElementById("product-price").value = parseFloat(selectedRow.cells[2].innerHTML.replace("$", ""));
+  document.getElementById("product-price").value = parseFloat(selectedRow.cells[2].innerHTML.replace("$", "",));
 }
 
 document.getElementById("product-form").addEventListener("submit", function(event) {
@@ -852,6 +919,7 @@ function deleteProduct(row) {
 // for divProducts
 
 // divWeight function //
+
 $('#formWeight').on('submit', function(event) {
   event.preventDefault();
   
@@ -868,10 +936,15 @@ $('#formWeight').on('submit', function(event) {
     $('#product-name').val('');
     $('#amount').val('');
     $('#weight').val('');
+  
+    var tbody = document.getElementById('tableBody');
+
+
   });
 // divWeight function //
 
 // divRaw function //
+
 $('#formRaw').on('submit', function(event) {
   event.preventDefault();
 
@@ -879,18 +952,16 @@ $('#formRaw').on('submit', function(event) {
   var material = $('#material').val();
   var pounds = parseFloat($('#pounds').val());
   var user = $('#user').val();
-  var date = new Date().toLocaleDateString();
+  var date = new Date().toLocaleDateString('en-US'); // using US date format
 
   // Append data to table
-  $('#divRaw table tbody').append('<tr><td>' + material + '</td><td>' + pounds + ' lbs</td><td>' + user + '</td><td>' + date + '</td></tr>');
+  $('#divRaw table tbody').append('<tr><td>' + material + '</td><td>' + pounds.toFixed(1) + ' lbs</td><td>' + user + '</td><td>' + date + '</td></tr>');
 
   // Clear input values
   $('#material').val('');
-  parseFloat($('#pounds').val(''));
+  $('#pounds').val('');
   $('#user').val('');
-  $('#date').val('');
 });
-
 
 // divRaw function //
 
